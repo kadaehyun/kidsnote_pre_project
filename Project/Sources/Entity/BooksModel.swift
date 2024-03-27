@@ -13,7 +13,7 @@ struct BooksModel: Decodable {
 	let items: [BooksItem]?
 }
 
-struct BooksItem: Decodable {
+struct BooksItem: Decodable, Hashable {
 	let kind: String?
 	let id: String?
 	let etag: String?
@@ -24,7 +24,7 @@ struct BooksItem: Decodable {
 	let searchInfo: SearchInfo?
 }
 
-struct VolumeInfo: Decodable {
+struct VolumeInfo: Decodable, Hashable {
 	let title: String?
 	let authors: [String]?
 	let publisher: String?
@@ -45,23 +45,23 @@ struct VolumeInfo: Decodable {
 	let infoLink: String?
 	let icanonicalVolumeLinkd: String?
 	
-	struct ReadingModes: Decodable {
+	struct ReadingModes: Decodable, Hashable {
 		let text: Bool?
 		let image: Bool?
 	}
 	
-	struct PanelizationSummary: Decodable {
+	struct PanelizationSummary: Decodable, Hashable {
 		let containsEpubBubbles: Bool?
 		let containsImageBubbles: Bool?
 	}
 	
-	struct ImageLinks: Decodable {
+	struct ImageLinks: Decodable, Hashable {
 		let smallThumbnail: String?
 		let thumbnail: String?
 	}
 }
 
-struct SaleInfo: Decodable {
+struct SaleInfo: Decodable, Hashable {
 	let country: String?
 	let saleability: String?
 	let isEbook: Bool?
@@ -70,34 +70,34 @@ struct SaleInfo: Decodable {
 	let buyLink: String?
 	let offers: [Offers]?
 	
-	struct ListPrice: Decodable {
+	struct ListPrice: Decodable, Hashable {
 		let amount: Int?
 		let currencyCode: String?
 	}
 	
-	struct RetailPrice: Decodable {
+	struct RetailPrice: Decodable, Hashable {
 		let amount: Int?
 		let currencyCode: String?
 	}
 	
-	struct Offers: Decodable {
+	struct Offers: Decodable, Hashable {
 		let finskyOfferType: Int?
 		let listPrice: ListPrice?
 		let retailPrice: RetailPrice?
 		
-		struct ListPrice: Decodable {
+		struct ListPrice: Decodable, Hashable {
 			let amountInMicros: Int?
 			let currencyCode: String?
 		}
 		
-		struct RetailPrice: Decodable {
+		struct RetailPrice: Decodable, Hashable {
 			let amountInMicros: Int?
 			let currencyCode: String?
 		}
 	}
 }
 
-struct AccessInfo: Decodable {
+struct AccessInfo: Decodable, Hashable {
 	let country: String?
 	let viewability: String?
 	let embeddable: Bool?
@@ -109,15 +109,15 @@ struct AccessInfo: Decodable {
 	let accessViewStatus: String?
 	let quoteSharingAllowed: Bool?
 	
-	struct Epub: Decodable {
+	struct Epub: Decodable, Hashable {
 		let isAvailable: Bool?
 	}
 	
-	struct Pdf: Decodable {
+	struct Pdf: Decodable, Hashable {
 		let isAvailable: Bool?
 	}
 }
 
-struct SearchInfo: Decodable {
+struct SearchInfo: Decodable, Hashable {
 	let textSnippet: String?
 }
