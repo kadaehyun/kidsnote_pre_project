@@ -31,6 +31,7 @@ final class SearchViewController: UIViewController, View {
 		$0.textColor = .darkGray
 		$0.placeholder = "Play 북에서 검색"
 		$0.returnKeyType = .search
+		$0.clearButtonMode = .whileEditing
 	}
 	
 	private let lineView = UIView().then {
