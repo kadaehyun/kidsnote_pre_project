@@ -9,12 +9,15 @@ import FlexLayout
 import PinLayout
 import Then
 import UIKit
+import ReactorKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController, View {
 	
 	// MARK: - Constants
 	
 	// MARK: - Properties
+	
+	var disposeBag = DisposeBag()
 	
 	// MARK: - UI
 	
@@ -80,6 +83,12 @@ final class SearchViewController: UIViewController {
 	// MARK: - Configure
 
 	// MARK: - Logic
+	
+	// MARK: - Bind
+
+	func bind(reactor: SearchViewReactor) {
+		
+	}
 }
 
 // MARK: - Layout
