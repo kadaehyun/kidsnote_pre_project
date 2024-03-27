@@ -23,6 +23,8 @@
 		E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322704B2BB3FBCA0013009C /* SearchViewReactor.swift */; };
 		E322704F2BB413F00013009C /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322704E2BB413F00013009C /* BooksService.swift */; };
 		E32270522BB4199C0013009C /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270512BB4199C0013009C /* BooksModel.swift */; };
+		E322705C2BB4434E0013009C /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = E322705B2BB4434E0013009C /* Differentiator */; };
+		E322705E2BB4434E0013009C /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E322705D2BB4434E0013009C /* RxDataSources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +49,9 @@
 				E32270312BB3B7210013009C /* PinLayout in Frameworks */,
 				E32270342BB3B72B0013009C /* Then in Frameworks */,
 				E322703F2BB3F3AA0013009C /* ReactorKit in Frameworks */,
+				E322705E2BB4434E0013009C /* RxDataSources in Frameworks */,
 				E32270462BB3F41C0013009C /* RxCocoa in Frameworks */,
+				E322705C2BB4434E0013009C /* Differentiator in Frameworks */,
 				E32270442BB3F41C0013009C /* RxBlocking-Dynamic in Frameworks */,
 				E322702E2BB3B7190013009C /* FlexLayout in Frameworks */,
 				E32270422BB3F41C0013009C /* RxBlocking in Frameworks */,
@@ -162,6 +166,8 @@
 				E32270452BB3F41C0013009C /* RxCocoa */,
 				E32270472BB3F41C0013009C /* RxCocoa-Dynamic */,
 				E32270492BB3F41C0013009C /* RxRelay */,
+				E322705B2BB4434E0013009C /* Differentiator */,
+				E322705D2BB4434E0013009C /* RxDataSources */,
 			);
 			productName = KidsnotePreProject;
 			productReference = E32270052BB39ADA0013009C /* KidsnotePreProject.app */;
@@ -197,6 +203,7 @@
 				E32270322BB3B72B0013009C /* XCRemoteSwiftPackageReference "Then" */,
 				E322703D2BB3F3AA0013009C /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				E32270402BB3F41C0013009C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = E32270062BB39ADA0013009C /* Products */;
 			projectDirPath = "";
@@ -227,7 +234,6 @@
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
-				E32270562BB42E4B0013009C /* BooksModel.swift in Sources */,
 				E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */,
 				E32270522BB4199C0013009C /* BooksModel.swift in Sources */,
 			);
@@ -482,6 +488,14 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -529,6 +543,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E32270402BB3F41C0013009C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
+		};
+		E322705B2BB4434E0013009C /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		E322705D2BB4434E0013009C /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
