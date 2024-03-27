@@ -12,6 +12,9 @@
 		E32270102BB39ADA0013009C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E322700E2BB39ADA0013009C /* Main.storyboard */; };
 		E32270122BB39ADB0013009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32270112BB39ADB0013009C /* Assets.xcassets */; };
 		E32270152BB39ADB0013009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32270132BB39ADB0013009C /* LaunchScreen.storyboard */; };
+		E322702E2BB3B7190013009C /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E322702D2BB3B7190013009C /* FlexLayout */; };
+		E32270312BB3B7210013009C /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E32270302BB3B7210013009C /* PinLayout */; };
+		E32270342BB3B72B0013009C /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E32270332BB3B72B0013009C /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32270312BB3B7210013009C /* PinLayout in Frameworks */,
+				E32270342BB3B72B0013009C /* Then in Frameworks */,
+				E322702E2BB3B7190013009C /* FlexLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +110,11 @@
 			dependencies = (
 			);
 			name = KidsnotePreProject;
+			packageProductDependencies = (
+				E322702D2BB3B7190013009C /* FlexLayout */,
+				E32270302BB3B7210013009C /* PinLayout */,
+				E32270332BB3B72B0013009C /* Then */,
+			);
 			productName = KidsnotePreProject;
 			productReference = E32270052BB39ADA0013009C /* KidsnotePreProject.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +143,11 @@
 				Base,
 			);
 			mainGroup = E3226FFC2BB39ADA0013009C;
+			packageReferences = (
+				E322702C2BB3B7190013009C /* XCRemoteSwiftPackageReference "FlexLayout" */,
+				E322702F2BB3B7210013009C /* XCRemoteSwiftPackageReference "PinLayout" */,
+				E32270322BB3B72B0013009C /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = E32270062BB39ADA0013009C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -381,6 +397,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E322702C2BB3B7190013009C /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.7;
+			};
+		};
+		E322702F2BB3B7210013009C /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.5;
+			};
+		};
+		E32270322BB3B72B0013009C /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E322702D2BB3B7190013009C /* FlexLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E322702C2BB3B7190013009C /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayout;
+		};
+		E32270302BB3B7210013009C /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E322702F2BB3B7210013009C /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		E32270332BB3B72B0013009C /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32270322BB3B72B0013009C /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E3226FFD2BB39ADA0013009C /* Project object */;
 }
