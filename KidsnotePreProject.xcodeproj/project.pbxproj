@@ -26,6 +26,7 @@
 		E322705C2BB4434E0013009C /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = E322705B2BB4434E0013009C /* Differentiator */; };
 		E322705E2BB4434E0013009C /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E322705D2BB4434E0013009C /* RxDataSources */; };
 		E32270612BB443D10013009C /* SearchViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270602BB443D10013009C /* SearchViewSection.swift */; };
+		E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270662BB44E4E0013009C /* Array+SectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		E322704E2BB413F00013009C /* BooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksService.swift; sourceTree = "<group>"; };
 		E32270512BB4199C0013009C /* BooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
 		E32270602BB443D10013009C /* SearchViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSection.swift; sourceTree = "<group>"; };
+		E32270662BB44E4E0013009C /* Array+SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				E32270502BB4197F0013009C /* Entity */,
 				E322704D2BB413BB0013009C /* Service */,
+				E32270652BB44E250013009C /* Extension */,
 				E32270382BB3DD070013009C /* Domain */,
 				E32270082BB39ADA0013009C /* AppDelegate.swift */,
 			);
@@ -149,6 +152,14 @@
 				E32270602BB443D10013009C /* SearchViewSection.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		E32270652BB44E250013009C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E32270662BB44E4E0013009C /* Array+SectionModel.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */,
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,

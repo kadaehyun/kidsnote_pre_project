@@ -71,6 +71,8 @@ final class SearchViewReactor: Reactor {
 			newState.items = items
 			
 		case .updateSections:
+			defer { newState.sections.removeDuplicates() }
+			
 			newState.sections = self.assembleSections(state: newState)
 		}
 		
