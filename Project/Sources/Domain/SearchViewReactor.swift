@@ -17,9 +17,11 @@ final class SearchViewReactor: Reactor {
 	}
 	
 	enum Mutation {
+		case setItems([BooksItem])
 	}
 	
 	struct State {
+		fileprivate var items: [BooksItem]
 	}
 	
 	// MARK: - Properties
@@ -30,6 +32,7 @@ final class SearchViewReactor: Reactor {
 	
 	init() {
 		self.initialState = State(
+			items: []
 		)
 	}
 	
@@ -37,20 +40,35 @@ final class SearchViewReactor: Reactor {
 
 	func mutate(action: Action) -> Observable<Mutation> {
 		switch action {
-		case let .search(text):
-			guard let text, text.isEmpty == false else { return .empty() }
+		case let .search(keyword):
+			guard let keyword, keyword.isEmpty == false else { return .empty() }
 			
-			return self.fetchBooks(text: text)
+			return self.fetchBooks(keyword: keyword)
 		}
 	}
 	
 	// MARK: - Mutation -> State
 
 	func reduce(state: State, mutation: Mutation) -> State {
-		state
+		var newState = state
+
+		switch mutation {
+		case let .setItems(items):
+			newState.items = items
+		}
+
+		return newState
 	}
 	
-	private func fetchBooks(text: String) -> Observable<Mutation> {
-		.empty()
+	// MARK: - Private
+	
+	private func fetchBooks(keyword: String) -> Observable<Mutation> {
+		BooksService().fetchBooks(keyword: keyword)
+			.asObservable()
+			.flatMap { response -> Observable<Mutation> in
+				guard let items = response.items else { return .empty() }
+				
+				return Observable.just(Mutation.setItems(items))
+			}.catch { _ in .empty() }
 	}
 }
