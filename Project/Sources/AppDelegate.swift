@@ -13,9 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-		let rootViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
-		
+		let rootViewController = SearchViewController()
 		let navigationController = UINavigationController(rootViewController: rootViewController)
 		
 		self.window = UIWindow(frame: UIScreen.main.bounds)
