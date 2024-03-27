@@ -15,6 +15,7 @@
 		E322702E2BB3B7190013009C /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E322702D2BB3B7190013009C /* FlexLayout */; };
 		E32270312BB3B7210013009C /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E32270302BB3B7210013009C /* PinLayout */; };
 		E32270342BB3B72B0013009C /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E32270332BB3B72B0013009C /* Then */; };
+		E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270392BB3DD460013009C /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E32270112BB39ADB0013009C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E32270142BB39ADB0013009C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E32270162BB39ADB0013009C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E32270392BB3DD460013009C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		E32270272BB3B2320013009C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E32270382BB3DD070013009C /* Domain */,
 				E32270082BB39ADA0013009C /* AppDelegate.swift */,
 				E322700C2BB39ADA0013009C /* ViewController.swift */,
 			);
@@ -92,6 +95,14 @@
 				E32270162BB39ADB0013009C /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E32270382BB3DD070013009C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E32270392BB3DD460013009C /* SearchViewController.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E322700D2BB39ADA0013009C /* ViewController.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
 			);
