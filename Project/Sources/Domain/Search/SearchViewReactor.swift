@@ -19,11 +19,13 @@ final class SearchViewReactor: Reactor {
 	enum Mutation {
 		case setLoading(Bool)
 		case setItems([BooksItem])
+		case updateSections
 	}
 	
 	struct State {
 		var isLoading: Bool
 		fileprivate var items: [BooksItem]
+		var sections: [SearchViewSection]
 	}
 	
 	// MARK: - Properties
@@ -35,7 +37,8 @@ final class SearchViewReactor: Reactor {
 	init() {
 		self.initialState = State(
 			isLoading: false,
-			items: []
+			items: [],
+			sections: []
 		)
 	}
 	
@@ -49,7 +52,8 @@ final class SearchViewReactor: Reactor {
 			return Observable.concat([
 				Observable.just(Mutation.setLoading(true)),
 				self.fetchBooks(keyword: keyword),
-				Observable.just(Mutation.setLoading(false))
+				Observable.just(Mutation.setLoading(false)),
+				Observable.just(Mutation.updateSections)
 			])
 		}
 	}
@@ -65,8 +69,11 @@ final class SearchViewReactor: Reactor {
 			
 		case let .setItems(items):
 			newState.items = items
+			
+		case .updateSections:
+			newState.sections = self.assembleSections(state: newState)
 		}
-
+		
 		return newState
 	}
 	
@@ -80,5 +87,20 @@ final class SearchViewReactor: Reactor {
 				
 				return Observable.just(Mutation.setItems(items))
 			}.catch { _ in .empty() }
+	}
+}
+
+
+// MARK: - Assemble Sections
+
+extension SearchViewReactor {
+	private func assembleSections(state: State) -> [SearchViewSection] {
+		guard state.items.count > 0 else { return [] }
+		
+		let items = state.items.compactMap { item -> SearchViewSection.Item in
+			return .googleplay(item)
+		}
+		
+		return [SearchViewSection(identity: .googleplay, items: items)]
 	}
 }
