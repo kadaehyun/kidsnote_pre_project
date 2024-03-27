@@ -21,7 +21,8 @@
 		E32270482BB3F41C0013009C /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E32270472BB3F41C0013009C /* RxCocoa-Dynamic */; };
 		E322704A2BB3F41C0013009C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E32270492BB3F41C0013009C /* RxRelay */; };
 		E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322704B2BB3FBCA0013009C /* SearchViewReactor.swift */; };
-		E32270562BB42E4B0013009C /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270552BB42E4B0013009C /* BooksModel.swift */; };
+		E322704F2BB413F00013009C /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322704E2BB413F00013009C /* BooksService.swift */; };
+		E32270522BB4199C0013009C /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270512BB4199C0013009C /* BooksModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		E32270162BB39ADB0013009C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32270392BB3DD460013009C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E322704B2BB3FBCA0013009C /* SearchViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewReactor.swift; sourceTree = "<group>"; };
-		E32270552BB42E4B0013009C /* BooksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
+		E322704E2BB413F00013009C /* BooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksService.swift; sourceTree = "<group>"; };
+		E32270512BB4199C0013009C /* BooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 		E32270272BB3B2320013009C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E32270542BB42E2B0013009C /* Entity */,
+				E32270502BB4197F0013009C /* Entity */,
+				E322704D2BB413BB0013009C /* Service */,
 				E32270382BB3DD070013009C /* Domain */,
 				E32270082BB39ADA0013009C /* AppDelegate.swift */,
 			);
@@ -117,10 +120,18 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		E32270542BB42E2B0013009C /* Entity */ = {
+		E322704D2BB413BB0013009C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E32270552BB42E4B0013009C /* BooksModel.swift */,
+				E322704E2BB413F00013009C /* BooksService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E32270502BB4197F0013009C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E32270512BB4199C0013009C /* BooksModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -213,10 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
 				E32270562BB42E4B0013009C /* BooksModel.swift in Sources */,
 				E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */,
+				E32270522BB4199C0013009C /* BooksModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
