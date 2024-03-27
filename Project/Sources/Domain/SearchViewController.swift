@@ -93,9 +93,11 @@ final class SearchViewController: UIViewController, View {
 	}
 	
 	private func bindTextField(reactor: SearchViewReactor) {
-		self.textField.rx.controlEvent([.editingDidEndOnExit]).subscribe { _ in
-			print("editingDidEndOnExit")
-		}.disposed(by: self.disposeBag)
+		self.textField.rx
+			.controlEvent([.editingDidEndOnExit])
+			.map { _ in Reactor.Action.search(self.textField.text) }
+			.bind(to: reactor.action)
+			.disposed(by: self.disposeBag)
 	}
 }
 
