@@ -10,6 +10,7 @@ import PinLayout
 import Then
 import UIKit
 import ReactorKit
+import RxCocoa
 
 final class SearchViewController: UIViewController, View {
 	
@@ -29,6 +30,7 @@ final class SearchViewController: UIViewController, View {
 		$0.borderStyle = .none
 		$0.textColor = .darkGray
 		$0.placeholder = "Play 북에서 검색"
+		$0.returnKeyType = .search
 	}
 	
 	private let lineView = UIView().then {
@@ -87,7 +89,13 @@ final class SearchViewController: UIViewController, View {
 	// MARK: - Bind
 
 	func bind(reactor: SearchViewReactor) {
-		
+		self.bindTextField(reactor: reactor)
+	}
+	
+	private func bindTextField(reactor: SearchViewReactor) {
+		self.textField.rx.controlEvent([.editingDidEndOnExit]).subscribe { _ in
+			print("editingDidEndOnExit")
+		}.disposed(by: self.disposeBag)
 	}
 }
 
