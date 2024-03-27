@@ -17,10 +17,12 @@ final class SearchViewReactor: Reactor {
 	}
 	
 	enum Mutation {
+		case setLoading(Bool)
 		case setItems([BooksItem])
 	}
 	
 	struct State {
+		var isLoading: Bool
 		fileprivate var items: [BooksItem]
 	}
 	
@@ -32,6 +34,7 @@ final class SearchViewReactor: Reactor {
 	
 	init() {
 		self.initialState = State(
+			isLoading: false,
 			items: []
 		)
 	}
@@ -43,7 +46,11 @@ final class SearchViewReactor: Reactor {
 		case let .search(keyword):
 			guard let keyword, keyword.isEmpty == false else { return .empty() }
 			
-			return self.fetchBooks(keyword: keyword)
+			return Observable.concat([
+				Observable.just(Mutation.setLoading(true)),
+				self.fetchBooks(keyword: keyword),
+				Observable.just(Mutation.setLoading(false))
+			])
 		}
 	}
 	
@@ -53,6 +60,9 @@ final class SearchViewReactor: Reactor {
 		var newState = state
 
 		switch mutation {
+		case let .setLoading(isLoading):
+			newState.isLoading = isLoading
+			
 		case let .setItems(items):
 			newState.items = items
 		}

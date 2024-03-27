@@ -46,6 +46,11 @@ final class SearchViewController: UIViewController, View {
 		$0.showsVerticalScrollIndicator = false
 	}
 	
+	private let activityIndicator = UIActivityIndicatorView().then {
+		$0.style = .large
+		$0.isHidden = true
+	}
+	
 	// MARK: - Initialize
 	
 	@available(*, unavailable) required convenience init(coder aDecoder: NSCoder) {
@@ -89,7 +94,30 @@ final class SearchViewController: UIViewController, View {
 	// MARK: - Bind
 
 	func bind(reactor: SearchViewReactor) {
+		self.bindLifeCycle(reactor: reactor)
 		self.bindTextField(reactor: reactor)
+	}
+	
+	func bindLifeCycle(reactor: SearchViewReactor) {
+		reactor.state.map { $0.isLoading }
+			.distinctUntilChanged()
+			.withUnretained(self)
+			.subscribe(onNext: { owner, isLoading in
+				DispatchQueue.main.async {
+					if isLoading == true {
+						owner.activityIndicator.isHidden = false
+						owner.activityIndicator.flex.isIncludedInLayout = true
+						owner.activityIndicator.startAnimating()
+						owner.view.setNeedsLayout()
+					} else {
+						owner.activityIndicator.stopAnimating()
+						owner.activityIndicator.isHidden = true
+						owner.activityIndicator.flex.isIncludedInLayout = false
+						owner.view.setNeedsLayout()
+					}
+				}
+			})
+			.disposed(by: self.disposeBag)
 	}
 	
 	private func bindTextField(reactor: SearchViewReactor) {
@@ -111,6 +139,7 @@ private extension SearchViewController {
 				$0.addItem(self.textField).height(40).marginHorizontal(12)
 				$0.addItem(self.lineView).height(1)
 				$0.addItem(self.collectionView).grow(1)
+				$0.addItem(self.activityIndicator).position(.absolute).all(0)
 			}
 	}
 	
