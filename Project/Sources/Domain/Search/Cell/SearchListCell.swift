@@ -76,6 +76,25 @@ final class SearchListCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(item: BooksItem) {
+		self.titleLabel.text = item.volumeInfo?.title
+		self.authorsLabel.text = item.volumeInfo?.authors?.first
+		self.printTypeLabel.text = item.volumeInfo?.printType
+		
+		if let averageRating = item.volumeInfo?.averageRating {
+			self.averageRatingLabel.text = "\(averageRating) ★"
+		} else {
+			self.averageRatingLabel.text = nil
+		}
+		
+		self.titleLabel.flex.markDirty()
+		self.authorsLabel.flex.markDirty()
+		self.printTypeLabel.flex.markDirty()
+		self.averageRatingLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
 }
 

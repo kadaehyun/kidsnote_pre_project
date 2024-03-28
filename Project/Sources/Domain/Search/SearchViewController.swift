@@ -101,8 +101,10 @@ final class SearchViewController: UIViewController, View {
 	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<SearchViewSection> {
 		.init(configureCell: { _, collectionView, indexPath, sectionItem in
 			switch sectionItem {
-			case .googleplay:
+			case let .googleplay(item):
 				let cell = collectionView.dequeue(Reusable.searchListCell, for: indexPath)
+				
+				cell.configure(item: item)
 				
 				return cell
 			}
