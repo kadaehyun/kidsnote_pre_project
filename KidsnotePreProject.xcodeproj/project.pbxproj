@@ -33,6 +33,7 @@
 		E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */; };
 		E355C6502BB548AF00AA3778 /* SearchListHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */; };
 		E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */; };
+		E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extension.swift"; sourceTree = "<group>"; };
 		E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListHeaderReusableView.swift; sourceTree = "<group>"; };
 		E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Empty.swift"; sourceTree = "<group>"; };
+		E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		E32270382BB3DD070013009C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E3FCED472BB55BD300CEFAF4 /* Detail */,
 				E322705F2BB443B00013009C /* Search */,
 			);
 			path = Domain;
@@ -192,6 +195,14 @@
 				E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */,
 			);
 			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		E3FCED472BB55BD300CEFAF4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 				E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */,
 				E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */,
 				E355C6462BB501F600AA3778 /* SearchListCell.swift in Sources */,
+				E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */,
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */,
