@@ -32,6 +32,7 @@
 		E355C64B2BB50C1F00AA3778 /* RxReusableKit in Frameworks */ = {isa = PBXBuildFile; productRef = E355C64A2BB50C1F00AA3778 /* RxReusableKit */; };
 		E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */; };
 		E355C6502BB548AF00AA3778 /* SearchListHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */; };
+		E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		E355C6452BB501F600AA3778 /* SearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCell.swift; sourceTree = "<group>"; };
 		E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extension.swift"; sourceTree = "<group>"; };
 		E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListHeaderReusableView.swift; sourceTree = "<group>"; };
+		E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Empty.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				E32270662BB44E4E0013009C /* Array+SectionModel.swift */,
 				E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */,
+				E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */,
 				E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */,
 				E355C6462BB501F600AA3778 /* SearchListCell.swift in Sources */,
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,

@@ -20,6 +20,7 @@ final class SearchViewController: UIViewController, View {
 	
 	private enum Reusable {
 		static let searchListCell = ReusableCell<SearchListCell>()
+		static let headerReusableView = ReusableView<SearchListHeaderReusableView>()
 	}
 	
 	// MARK: - Properties
@@ -53,6 +54,7 @@ final class SearchViewController: UIViewController, View {
 		$0.alwaysBounceVertical = true
 		$0.showsVerticalScrollIndicator = false
 		$0.register(Reusable.searchListCell)
+		$0.register(Reusable.headerReusableView, kind: .header)
 	}
 	
 	private let activityIndicator = UIActivityIndicatorView().then {
@@ -107,6 +109,20 @@ final class SearchViewController: UIViewController, View {
 				cell.configure(item: item)
 				
 				return cell
+			}
+		}, configureSupplementaryView: { [weak self] _, collectionView, kind, indexPath in
+			guard let self else { return collectionView.emptyView(for: indexPath, kind: kind) }
+			guard kind == UICollectionView.elementKindSectionHeader else {
+				return collectionView.emptyView(for: indexPath, kind: kind)
+			}
+			
+			let section = self.dataSource[indexPath.section].identity
+
+			switch section {
+			case .googleplay:
+				let view = collectionView.dequeue(Reusable.headerReusableView, kind: kind, for: indexPath)
+				
+				return view
 			}
 		})
 	}
@@ -193,6 +209,15 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 		switch sectionItem {
 		case .googleplay:
 			return CGSize(width: UIScreen.main.bounds.width, height: 80)
+		}
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		let section = self.dataSource[section].identity
+
+		switch section {
+		case .googleplay:
+			return CGSize(width: UIScreen.main.bounds.width, height: 40)
 		}
 	}
 }
