@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "reusablekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/devxoul/ReusableKit",
+      "state" : {
+        "revision" : "22910a503dfc81018c0270dbb62a30279d80b00f",
+        "version" : "4.0.0"
+      }
+    },
+    {
       "identity" : "rxdatasources",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RxSwiftCommunity/RxDataSources.git",

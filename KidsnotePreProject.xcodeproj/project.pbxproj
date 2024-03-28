@@ -28,6 +28,8 @@
 		E32270612BB443D10013009C /* SearchViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270602BB443D10013009C /* SearchViewSection.swift */; };
 		E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270662BB44E4E0013009C /* Array+SectionModel.swift */; };
 		E355C6462BB501F600AA3778 /* SearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C6452BB501F600AA3778 /* SearchListCell.swift */; };
+		E355C6492BB50C1F00AA3778 /* ReusableKit in Frameworks */ = {isa = PBXBuildFile; productRef = E355C6482BB50C1F00AA3778 /* ReusableKit */; };
+		E355C64B2BB50C1F00AA3778 /* RxReusableKit in Frameworks */ = {isa = PBXBuildFile; productRef = E355C64A2BB50C1F00AA3778 /* RxReusableKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,11 +54,13 @@
 			files = (
 				E322704A2BB3F41C0013009C /* RxRelay in Frameworks */,
 				E32270482BB3F41C0013009C /* RxCocoa-Dynamic in Frameworks */,
+				E355C6492BB50C1F00AA3778 /* ReusableKit in Frameworks */,
 				E32270312BB3B7210013009C /* PinLayout in Frameworks */,
 				E32270342BB3B72B0013009C /* Then in Frameworks */,
 				E322703F2BB3F3AA0013009C /* ReactorKit in Frameworks */,
 				E322705E2BB4434E0013009C /* RxDataSources in Frameworks */,
 				E32270462BB3F41C0013009C /* RxCocoa in Frameworks */,
+				E355C64B2BB50C1F00AA3778 /* RxReusableKit in Frameworks */,
 				E322705C2BB4434E0013009C /* Differentiator in Frameworks */,
 				E32270442BB3F41C0013009C /* RxBlocking-Dynamic in Frameworks */,
 				E322702E2BB3B7190013009C /* FlexLayout in Frameworks */,
@@ -201,6 +205,8 @@
 				E32270492BB3F41C0013009C /* RxRelay */,
 				E322705B2BB4434E0013009C /* Differentiator */,
 				E322705D2BB4434E0013009C /* RxDataSources */,
+				E355C6482BB50C1F00AA3778 /* ReusableKit */,
+				E355C64A2BB50C1F00AA3778 /* RxReusableKit */,
 			);
 			productName = KidsnotePreProject;
 			productReference = E32270052BB39ADA0013009C /* KidsnotePreProject.app */;
@@ -237,6 +243,7 @@
 				E322703D2BB3F3AA0013009C /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				E32270402BB3F41C0013009C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				E355C6472BB50C1F00AA3778 /* XCRemoteSwiftPackageReference "ReusableKit" */,
 			);
 			productRefGroup = E32270062BB39ADA0013009C /* Products */;
 			projectDirPath = "";
@@ -532,6 +539,14 @@
 				minimumVersion = 5.0.2;
 			};
 		};
+		E355C6472BB50C1F00AA3778 /* XCRemoteSwiftPackageReference "ReusableKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/ReusableKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -589,6 +604,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		E355C6482BB50C1F00AA3778 /* ReusableKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E355C6472BB50C1F00AA3778 /* XCRemoteSwiftPackageReference "ReusableKit" */;
+			productName = ReusableKit;
+		};
+		E355C64A2BB50C1F00AA3778 /* RxReusableKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E355C6472BB50C1F00AA3778 /* XCRemoteSwiftPackageReference "ReusableKit" */;
+			productName = RxReusableKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
