@@ -55,6 +55,13 @@ public final class SearchListHeaderReusableView: UICollectionReusableView {
 
 	// MARK: - Configure
 
+	func configure(title: String) {
+		self.titleLabel.text = title
+		self.titleLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
 }
 

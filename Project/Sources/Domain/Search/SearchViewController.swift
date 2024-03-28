@@ -121,6 +121,8 @@ final class SearchViewController: UIViewController, View {
 			switch section {
 			case .googleplay:
 				let view = collectionView.dequeue(Reusable.headerReusableView, kind: kind, for: indexPath)
+
+				view.configure(title: "Google Play 검색결과")
 				
 				return view
 			}
