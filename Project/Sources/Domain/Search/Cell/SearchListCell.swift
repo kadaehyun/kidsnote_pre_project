@@ -87,6 +87,12 @@ final class SearchListCell: UICollectionViewCell {
 			self.averageRatingLabel.text = nil
 		}
 		
+		if let urlString = item.volumeInfo?.imageLinks?.smallThumbnail, let url = URL(string: urlString) {
+			self.thumbnailImageView.imageDownload(url: url)
+		} else {
+			self.thumbnailImageView.image = nil
+		}
+		
 		self.titleLabel.flex.markDirty()
 		self.authorsLabel.flex.markDirty()
 		self.printTypeLabel.flex.markDirty()
