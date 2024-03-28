@@ -11,13 +11,20 @@ import Then
 import UIKit
 import ReactorKit
 import RxCocoa
+import ReusableKit
+import RxDataSources
 
 final class SearchViewController: UIViewController, View {
 	
 	// MARK: - Constants
 	
+	private enum Reusable {
+		static let searchListCell = ReusableCell<SearchListCell>()
+	}
+	
 	// MARK: - Properties
 	
+	private lazy var dataSource = self.createDataSource()
 	var disposeBag = DisposeBag()
 	
 	// MARK: - UI
@@ -45,6 +52,7 @@ final class SearchViewController: UIViewController, View {
 	.then {
 		$0.alwaysBounceVertical = true
 		$0.showsVerticalScrollIndicator = false
+		$0.register(Reusable.searchListCell)
 	}
 	
 	private let activityIndicator = UIActivityIndicatorView().then {
@@ -90,6 +98,17 @@ final class SearchViewController: UIViewController, View {
 
 	// MARK: - Configure
 
+	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<SearchViewSection> {
+		.init(configureCell: { _, collectionView, indexPath, sectionItem in
+			switch sectionItem {
+			case .googleplay:
+				let cell = collectionView.dequeue(Reusable.searchListCell, for: indexPath)
+				
+				return cell
+			}
+		})
+	}
+
 	// MARK: - Logic
 	
 	// MARK: - Bind
@@ -97,6 +116,7 @@ final class SearchViewController: UIViewController, View {
 	func bind(reactor: SearchViewReactor) {
 		self.bindLifeCycle(reactor: reactor)
 		self.bindTextField(reactor: reactor)
+		self.bindCollectionView(reactor: reactor)
 	}
 	
 	func bindLifeCycle(reactor: SearchViewReactor) {
@@ -128,6 +148,17 @@ final class SearchViewController: UIViewController, View {
 			.bind(to: reactor.action)
 			.disposed(by: self.disposeBag)
 	}
+	
+	private func bindCollectionView(reactor: SearchViewReactor) {
+		self.collectionView.rx
+			.setDelegate(self)
+			.disposed(by: self.disposeBag)
+		
+		reactor.state
+			.map { $0.sections }
+			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
+	}
 }
 
 // MARK: - Layout
@@ -148,5 +179,18 @@ private extension SearchViewController {
 		self.contentView.pin.top(self.view.pin.safeArea.top).bottom().left().right()
 		
 		self.contentView.flex.layout()
+	}
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let sectionItem = self.dataSource[indexPath]
+		
+		switch sectionItem {
+		case .googleplay:
+			return CGSize(width: UIScreen.main.bounds.width, height: 80)
+		}
 	}
 }
