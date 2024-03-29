@@ -19,6 +19,7 @@ final class DetailViewReactor: Reactor {
 	}
 	
 	struct State {
+		fileprivate var item: BooksItem
 	}
 	
 	// MARK: - Properties
@@ -27,8 +28,9 @@ final class DetailViewReactor: Reactor {
 	
 	// MARK: - Initialize
 	
-	init() {
+	init(item: BooksItem) {
 		self.initialState = State(
+			item: item
 		)
 	}
 	

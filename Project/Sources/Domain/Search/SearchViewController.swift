@@ -178,6 +178,22 @@ final class SearchViewController: UIViewController, View {
 			.map { $0.sections }
 			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
 			.disposed(by: self.disposeBag)
+		
+		self.collectionView.rx
+			.itemSelected
+			.withUnretained(self)
+			.subscribe(onNext: { owner, indexPath in
+				let sectionItem = owner.dataSource[indexPath]
+				
+				guard case let .googleplay(item) = sectionItem else { return }
+				
+				let viewController = DetailViewController()
+				viewController.reactor = DetailViewReactor(item: item)
+				
+				owner.navigationController?.pushViewController(viewController, animated: true)
+			})
+			.disposed(by: self.disposeBag)
+
 	}
 }
 
