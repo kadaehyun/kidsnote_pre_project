@@ -9,13 +9,16 @@ import FlexLayout
 import PinLayout
 import Then
 import UIKit
+import ReactorKit
 
-final class LibraryCarouselCell: UICollectionViewCell {
+final class LibraryCarouselCell: UICollectionViewCell, View {
 	
 	// MARK: - Constants
 	
 	// MARK: - Properties
 
+	var disposeBag = DisposeBag()
+	
 	// MARK: - UI
 	
 	private let collectionView = UICollectionView(
@@ -67,6 +70,12 @@ final class LibraryCarouselCell: UICollectionViewCell {
 	// MARK: - Configure
 
 	// MARK: - Logic
+	
+	// MARK: - Bind
+
+	func bind(reactor: LibraryCarouselCellReactor) {
+		
+	}
 }
 
 // MARK: - Layout
