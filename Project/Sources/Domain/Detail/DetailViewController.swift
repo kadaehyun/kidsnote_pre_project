@@ -20,6 +20,7 @@ final class DetailViewController: UIViewController, View {
 	private enum Reusable {
 		static let detailVolumeInfoCell = ReusableCell<DetailVolumeInfoCell>()
 		static let detailEBookInfoCell = ReusableCell<DetailEBookInfoCell>()
+		static let detailPublishedDateCell = ReusableCell<DetailPublishedDateCell>()
 	}
 	
 	// MARK: - Properties
@@ -42,6 +43,7 @@ final class DetailViewController: UIViewController, View {
 		$0.showsVerticalScrollIndicator = false
 		$0.register(Reusable.detailVolumeInfoCell)
 		$0.register(Reusable.detailEBookInfoCell)
+		$0.register(Reusable.detailPublishedDateCell)
 	}
 	
 	// MARK: - Initialize
@@ -97,8 +99,12 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(description: description)
 				
 				return cell
-			case .publishedDate(_):
-				return collectionView.emptyCell(for: indexPath)
+			case let .publishedDate(volumeInfo):
+				let cell = collectionView.dequeue(Reusable.detailPublishedDateCell, for: indexPath)
+				
+				cell.configure(volumeInfo: volumeInfo)
+				
+				return cell
 			}
 		})
 	}

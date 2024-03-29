@@ -28,6 +28,7 @@ struct VolumeInfo: Decodable, Hashable {
 	let title: String?
 	let authors: [String]?
 	let publisher: String?
+	let publishedDate: String?
 	let description: String?
 	let readingModes: ReadingModes?
 	let pageCount: Int?

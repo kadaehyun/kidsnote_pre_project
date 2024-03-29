@@ -59,7 +59,41 @@ final class DetailPublishedDateCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(volumeInfo: VolumeInfo) {
+		let publishedDate = {
+			let list = [
+				volumeInfo.publisher,
+				self.formattedDateFromString(
+					dateString: volumeInfo.publishedDate,
+					inputFormat: "yyyy-MM-dd",
+					outputFormat: "yyyy년 MM월 dd일"
+				)
+			].compactMap { $0 }
+			
+			return list.joined(separator: " • ")
+		}()
+		
+		self.publishedDateLabel.text = publishedDate
+		self.publishedDateLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
+	
+	private func formattedDateFromString(dateString: String?, inputFormat: String, outputFormat: String) -> String? {
+		guard let dateString else { return nil }
+		
+		let inputFormatter = DateFormatter()
+		inputFormatter.dateFormat = inputFormat
+		
+		guard let date = inputFormatter.date(from: dateString) else { return nil }
+		
+		let outputFormatter = DateFormatter()
+		outputFormatter.dateFormat = outputFormat
+		
+		return outputFormatter.string(from: date)
+	}
 }
 
 // MARK: - Layout
