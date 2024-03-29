@@ -48,6 +48,8 @@ final class DetailViewController: UIViewController, View {
 		$0.register(Reusable.lineReusableView, kind: .footer)
 	}
 	
+	private let shareButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
+	
 	// MARK: - Initialize
 	
 	@available(*, unavailable) required convenience init(coder aDecoder: NSCoder) {
@@ -61,6 +63,8 @@ final class DetailViewController: UIViewController, View {
 		
 		let backBarButtonItem = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: nil)
 		self.navigationItem.backBarButtonItem = backBarButtonItem
+		
+		self.navigationItem.rightBarButtonItem = self.shareButtonItem
 		
 		self.view.backgroundColor = .white
 		
@@ -137,7 +141,21 @@ final class DetailViewController: UIViewController, View {
 	// MARK: - Bind
 
 	func bind(reactor: DetailViewReactor) {
+		self.bindLifeCycle(reactor: reactor)
 		self.bindCollectionView(reactor: reactor)
+	}
+	
+	func bindLifeCycle(reactor: DetailViewReactor) {
+		self.shareButtonItem.rx.tap
+			.withUnretained(self)
+			.subscribe(onNext: { owner, _ in
+				guard let link = owner.reactor?.currentState.item.volumeInfo?.infoLink else { return }
+				
+				let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+				
+				owner.present(activityViewController, animated: true, completion: nil)
+			})
+		   .disposed(by: self.disposeBag)
 	}
 	
 	private func bindCollectionView(reactor: DetailViewReactor) {

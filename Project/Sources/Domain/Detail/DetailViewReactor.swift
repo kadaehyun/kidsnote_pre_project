@@ -19,7 +19,7 @@ final class DetailViewReactor: Reactor {
 	}
 	
 	struct State {
-		fileprivate var item: BooksItem
+		var item: BooksItem
 		var sections: [DetailViewSection]
 	}
 	
