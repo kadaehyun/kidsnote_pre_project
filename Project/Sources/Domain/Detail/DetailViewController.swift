@@ -21,6 +21,7 @@ final class DetailViewController: UIViewController, View {
 		static let detailVolumeInfoCell = ReusableCell<DetailVolumeInfoCell>()
 		static let detailEBookInfoCell = ReusableCell<DetailEBookInfoCell>()
 		static let detailPublishedDateCell = ReusableCell<DetailPublishedDateCell>()
+		static let lineReusableView = ReusableView<UICollectionReusableView>()
 	}
 	
 	// MARK: - Properties
@@ -44,6 +45,7 @@ final class DetailViewController: UIViewController, View {
 		$0.register(Reusable.detailVolumeInfoCell)
 		$0.register(Reusable.detailEBookInfoCell)
 		$0.register(Reusable.detailPublishedDateCell)
+		$0.register(Reusable.lineReusableView, kind: .footer)
 	}
 	
 	// MARK: - Initialize
@@ -106,6 +108,24 @@ final class DetailViewController: UIViewController, View {
 				
 				return cell
 			}
+		}, configureSupplementaryView: { [weak self] _, collectionView, kind, indexPath in
+			guard let self else { return collectionView.emptyView(for: indexPath, kind: kind) }
+			guard kind == UICollectionView.elementKindSectionFooter else {
+				return collectionView.emptyView(for: indexPath, kind: kind)
+			}
+			
+			let section = self.dataSource[indexPath.section].identity
+
+			switch section {
+			case .volumeInfo:
+				let view = collectionView.dequeue(Reusable.lineReusableView, kind: kind, for: indexPath)
+
+				view.backgroundColor = .lightGray
+				
+				return view
+			default:
+				return collectionView.emptyView(for: indexPath, kind: kind)
+			}
 		})
 	}
 	
@@ -159,6 +179,17 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 			return CGSize(width: UIScreen.main.bounds.width, height: 150)
 		case .publishedDate:
 			return CGSize(width: UIScreen.main.bounds.width, height: 78)
+		}
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		let section = self.dataSource[section].identity
+
+		switch section {
+		case .volumeInfo:
+			return CGSize(width: UIScreen.main.bounds.width, height: 1)
+		default:
+			return .zero
 		}
 	}
 }
