@@ -21,7 +21,7 @@ struct SearchViewSection {
 extension SearchViewSection {
 	enum Item: Hashable {
 		case library(BooksItem)
-		case librarySearch(BooksItem)
+		case librarySearch([BooksItem])
 		case googleplay(BooksItem)
 	}
 }

@@ -24,6 +24,7 @@ final class SearchViewReactor: Reactor {
 		case setItems([BooksItem])
 		case appendItems([BooksItem])
 		case setLibraryItems([BooksItem])
+		case setLibrarySearchItems([BooksItem])
 		case setTotalItemCount(Int)
 		case updateSections
 	}
@@ -33,6 +34,7 @@ final class SearchViewReactor: Reactor {
 		fileprivate var keyword: String
 		fileprivate var items: [BooksItem]
 		fileprivate var libraryItems: [BooksItem]
+		fileprivate var librarySearchItems: [BooksItem]
 		fileprivate var totalItemCount: Int
 		var sections: [SearchViewSection]
 	}
@@ -49,6 +51,7 @@ final class SearchViewReactor: Reactor {
 			keyword: "",
 			items: [],
 			libraryItems: [],
+			librarySearchItems: [],
 			totalItemCount: 0,
 			sections: []
 		)
@@ -65,6 +68,7 @@ final class SearchViewReactor: Reactor {
 			return Observable.concat([
 				Observable.just(Mutation.setLoading(true)),
 				Observable.just(Mutation.setLibraryItems([])),
+				self.fetchLibrarySearchBooks(keyword: keyword),
 				Observable.just(Mutation.updateSections),
 				self.fetchBooks(keyword: keyword),
 				Observable.just(Mutation.setLoading(false)),
@@ -113,6 +117,9 @@ final class SearchViewReactor: Reactor {
 		case let .setLibraryItems(items):
 			newState.libraryItems = items
 			
+		case let .setLibrarySearchItems(items):
+			newState.librarySearchItems = items
+			
 		case let .setTotalItemCount(count):
 			newState.totalItemCount = count
 			
@@ -151,12 +158,19 @@ final class SearchViewReactor: Reactor {
 		}
 	}
 	
+	private func fetchLibrarySearchBooks(keyword: String) -> Observable<Mutation> {
+		let libraryItems = BooksRepository.shared.fetchItem(text: keyword)
+		
+		return Observable.just(Mutation.setLibrarySearchItems(libraryItems))
+	}
+	
 	private func fetchLibraryBooks(text: String) -> Observable<Mutation> {
 		let libraryItems = BooksRepository.shared.fetchItem(text: text)
 		
 		return Observable.concat([
 			Observable.just(Mutation.setKeyword("")),
 			Observable.just(Mutation.setItems([])),
+			Observable.just(Mutation.setLibrarySearchItems([])),
 			Observable.just(Mutation.setTotalItemCount(0)),
 			Observable.just(Mutation.setLibraryItems(libraryItems))
 		])
@@ -176,6 +190,15 @@ extension SearchViewReactor {
 			}
 			
 			assembledSections.append(SearchViewSection(identity: .library, items: items))
+		}
+		
+		if state.librarySearchItems.count > 0 {
+			assembledSections.append(
+				SearchViewSection(
+					identity: .librarySearch,
+					items: [.librarySearch(state.librarySearchItems)]
+				)
+			)
 		}
 		
 		if state.items.count > 0 {
