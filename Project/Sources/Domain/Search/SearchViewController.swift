@@ -73,6 +73,9 @@ final class SearchViewController: UIViewController, View {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		let backBarButtonItem = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: nil)
+		self.navigationItem.backBarButtonItem = backBarButtonItem
+		
 		self.view.backgroundColor = .white
 		
 		self.view.addSubview(self.contentView)
