@@ -211,12 +211,18 @@ final class SearchViewController: UIViewController, View {
 			.subscribe(onNext: { owner, indexPath in
 				let sectionItem = owner.dataSource[indexPath]
 				
-				guard case let .googleplay(item) = sectionItem else { return }
-				
-				let viewController = DetailViewController()
-				viewController.reactor = DetailViewReactor(item: item)
-				
-				owner.navigationController?.pushViewController(viewController, animated: true)
+				switch sectionItem {
+				case let .googleplay(item):
+					let viewController = DetailViewController()
+					viewController.reactor = DetailViewReactor(item: item)
+					
+					owner.navigationController?.pushViewController(viewController, animated: true)
+				case let .library(item):
+					let viewController = DetailViewController()
+					viewController.reactor = DetailViewReactor(item: item)
+					
+					owner.navigationController?.pushViewController(viewController, animated: true)
+				}
 			})
 			.disposed(by: self.disposeBag)
 
