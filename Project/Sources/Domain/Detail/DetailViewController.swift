@@ -9,12 +9,15 @@ import FlexLayout
 import PinLayout
 import Then
 import UIKit
+import ReactorKit
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, View {
 	
 	// MARK: - Constants
 	
 	// MARK: - Properties
+	
+	var disposeBag = DisposeBag()
 	
 	// MARK: - UI
 	
@@ -70,6 +73,12 @@ final class DetailViewController: UIViewController {
 	// MARK: - Configure
 
 	// MARK: - Logic
+	
+	// MARK: - Bind
+
+	func bind(reactor: DetailViewReactor) {
+		
+	}
 }
 
 // MARK: - Layout
