@@ -10,6 +10,7 @@ import RxDataSources
 struct SearchViewSection {
 	enum Identity: Hashable {
 		case library
+		case librarySearch
 		case googleplay
 	}
 
@@ -20,6 +21,7 @@ struct SearchViewSection {
 extension SearchViewSection {
 	enum Item: Hashable {
 		case library(BooksItem)
+		case librarySearch(BooksItem)
 		case googleplay(BooksItem)
 	}
 }

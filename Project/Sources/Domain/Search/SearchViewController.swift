@@ -118,6 +118,8 @@ final class SearchViewController: UIViewController, View {
 				cell.configure(item: item)
 				
 				return cell
+			case .librarySearch:
+				return collectionView.emptyCell(for: indexPath)
 			}
 		}, configureSupplementaryView: { [weak self] _, collectionView, kind, indexPath in
 			guard let self else { return collectionView.emptyView(for: indexPath, kind: kind) }
@@ -222,6 +224,8 @@ final class SearchViewController: UIViewController, View {
 					viewController.reactor = DetailViewReactor(item: item)
 					
 					owner.navigationController?.pushViewController(viewController, animated: true)
+				default:
+					break
 				}
 			})
 			.disposed(by: self.disposeBag)
@@ -272,6 +276,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 		switch sectionItem {
 		case .googleplay, .library:
 			return CGSize(width: UIScreen.main.bounds.width, height: 80)
+		case .librarySearch:
+			return CGSize(width: UIScreen.main.bounds.width, height: 276)
 		}
 	}
 	
@@ -279,7 +285,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 		let section = self.dataSource[section].identity
 
 		switch section {
-		case .googleplay:
+		case .googleplay, .librarySearch:
 			return CGSize(width: UIScreen.main.bounds.width, height: 40)
 		default:
 			return .zero
