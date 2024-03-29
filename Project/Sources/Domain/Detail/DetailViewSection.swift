@@ -22,7 +22,7 @@ struct DetailViewSection {
 extension DetailViewSection {
 	enum Item: Hashable {
 		case volumeInfo(VolumeInfo)
-		case saveLibrary(VolumeInfo)
+		case saveLibrary(BooksItem)
 		case eBookInfo(VolumeInfo)
 		case publishedDate(VolumeInfo)
 	}

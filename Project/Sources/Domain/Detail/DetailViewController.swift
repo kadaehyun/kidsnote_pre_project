@@ -104,8 +104,10 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(volumeInfo: volumeInfo)
 				
 				return cell
-			case .saveLibrary:
+			case let .saveLibrary(item):
 				let cell = collectionView.dequeue(Reusable.detailSaveLibraryCell, for: indexPath)
+				
+				cell.configure(item: item)
 				
 				return cell
 			case let .eBookInfo(volumeInfo):

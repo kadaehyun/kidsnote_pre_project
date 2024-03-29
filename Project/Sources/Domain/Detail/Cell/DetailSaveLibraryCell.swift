@@ -9,6 +9,7 @@ import FlexLayout
 import PinLayout
 import Then
 import UIKit
+import RxSwift
 
 final class DetailSaveLibraryCell: UICollectionViewCell {
 	
@@ -16,6 +17,9 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 	
 	// MARK: - Properties
 
+	private var disposeBag = DisposeBag()
+	private var item: BooksItem?
+	
 	// MARK: - UI
 	
 	private let saveButton = UIButton().then {
@@ -33,6 +37,7 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 		super.init(frame: frame)
 		
 		self.defineFlexContainer()
+		self.bindButtons()
 	}
 	
 	@available(*, unavailable) required init?(coder: NSCoder) {
@@ -57,7 +62,24 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(item: BooksItem) {
+		self.item = item
+	}
+	
 	// MARK: - Logic
+	
+	// MARK: - Bind
+	
+	private func bindButtons() {
+		self.saveButton.rx.tap
+			.withUnretained(self)
+			.bind { owner, _ in
+				guard let item = owner.item else { return }
+				
+				BooksRepository.shared.save(item: item)
+			}
+			.disposed(by: self.disposeBag)
+	}
 }
 
 // MARK: - Layout

@@ -64,9 +64,7 @@ extension DetailViewReactor {
 	}
 	
 	static func saveLibrarySection(item: BooksItem) -> DetailViewSection? {
-		guard let volumeInfo = item.volumeInfo else { return nil }
-		
-		return .init(identity: .saveLibrary, items: [.saveLibrary(volumeInfo)])
+		return .init(identity: .saveLibrary, items: [.saveLibrary(item)])
 	}
 	
 	static func eBookInfoSection(item: BooksItem) -> DetailViewSection? {
