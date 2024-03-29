@@ -18,6 +18,17 @@ final class DetailPublishedDateCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let titleLabel = UILabel().then {
+		$0.font = .boldSystemFont(ofSize: 16)
+		$0.textColor = .black
+		$0.text = "게시일"
+	}
+	
+	private let publishedDateLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 14)
+		$0.textColor = .darkGray
+	}
+	
 	// MARK: - Initialize
 	
 	override init(frame: CGRect) {
@@ -55,6 +66,13 @@ final class DetailPublishedDateCell: UICollectionViewCell {
 
 private extension DetailPublishedDateCell {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.paddingHorizontal(20)
+			.paddingVertical(16)
+			.define {
+				$0.addItem(self.titleLabel)
+				$0.addItem(self.publishedDateLabel).marginTop(14).shrink(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
