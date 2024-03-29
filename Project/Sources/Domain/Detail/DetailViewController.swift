@@ -18,6 +18,19 @@ final class DetailViewController: UIViewController {
 	
 	// MARK: - UI
 	
+	private let contentView = UIView().then {
+		$0.backgroundColor = .white
+	}
+	
+	private let collectionView = UICollectionView(
+		frame: .zero,
+		collectionViewLayout: UICollectionViewFlowLayout()
+	)
+	.then {
+		$0.alwaysBounceVertical = true
+		$0.showsVerticalScrollIndicator = false
+	}
+	
 	// MARK: - Initialize
 	
 	@available(*, unavailable) required convenience init(coder aDecoder: NSCoder) {
@@ -28,6 +41,20 @@ final class DetailViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.view.backgroundColor = .white
+		
+		self.view.addSubview(self.contentView)
+		
+		self.defineFlexContainer()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.navigationController?.isNavigationBarHidden = false
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		self.navigationController?.isNavigationBarHidden = true
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -49,9 +76,15 @@ final class DetailViewController: UIViewController {
 
 private extension DetailViewController {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.direction(.column)
+			.define {
+				$0.addItem(self.collectionView).grow(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
-		self.view.flex.layout()
+		self.contentView.pin.all(0)
+		self.contentView.flex.layout()
 	}
 }
