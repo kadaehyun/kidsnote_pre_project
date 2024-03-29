@@ -10,6 +10,7 @@
 		E31250D72BB6503C00FF2899 /* DetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250D62BB6503C00FF2899 /* DetailViewReactor.swift */; };
 		E31250D92BB6563200FF2899 /* DetailViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250D82BB6563200FF2899 /* DetailViewSection.swift */; };
 		E31250DC2BB65CF700FF2899 /* DetailVolumeInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250DB2BB65CF700FF2899 /* DetailVolumeInfoCell.swift */; };
+		E31250E02BB6784700FF2899 /* DetailEBookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250DF2BB6784700FF2899 /* DetailEBookInfoCell.swift */; };
 		E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270082BB39ADA0013009C /* AppDelegate.swift */; };
 		E32270122BB39ADB0013009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32270112BB39ADB0013009C /* Assets.xcassets */; };
 		E32270152BB39ADB0013009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32270132BB39ADB0013009C /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 		E31250D62BB6503C00FF2899 /* DetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactor.swift; sourceTree = "<group>"; };
 		E31250D82BB6563200FF2899 /* DetailViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewSection.swift; sourceTree = "<group>"; };
 		E31250DB2BB65CF700FF2899 /* DetailVolumeInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVolumeInfoCell.swift; sourceTree = "<group>"; };
+		E31250DF2BB6784700FF2899 /* DetailEBookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEBookInfoCell.swift; sourceTree = "<group>"; };
 		E32270052BB39ADA0013009C /* KidsnotePreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsnotePreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32270082BB39ADA0013009C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32270112BB39ADB0013009C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				E31250DB2BB65CF700FF2899 /* DetailVolumeInfoCell.swift */,
+				E31250DF2BB6784700FF2899 /* DetailEBookInfoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */,
 				E31250D72BB6503C00FF2899 /* DetailViewReactor.swift in Sources */,
 				E32270672BB44E4E0013009C /* Array+SectionModel.swift in Sources */,
+				E31250E02BB6784700FF2899 /* DetailEBookInfoCell.swift in Sources */,
 				E355C6462BB501F600AA3778 /* SearchListCell.swift in Sources */,
 				E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */,
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
