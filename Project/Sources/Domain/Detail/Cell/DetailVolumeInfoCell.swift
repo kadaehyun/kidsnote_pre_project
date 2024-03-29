@@ -18,6 +18,34 @@ final class DetailVolumeInfoCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let thumbnailImageView = UIImageView().then {
+		$0.contentMode = .scaleAspectFill
+		$0.backgroundColor = .clear
+		$0.clipsToBounds = true
+		$0.layer.cornerRadius = 4
+	}
+	
+	private let titleLabel = UILabel().then {
+		$0.font = .boldSystemFont(ofSize: 22)
+		$0.textColor = .black
+		$0.numberOfLines = 3
+	}
+	
+	private let authorsLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 14)
+		$0.textColor = .darkGray
+	}
+	
+	private let printTypeLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 14)
+		$0.textColor = .darkGray
+	}
+	
+	private let pageCountLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 14)
+		$0.textColor = .darkGray
+	}
+	
 	// MARK: - Initialize
 	
 	override init(frame: CGRect) {
@@ -55,6 +83,35 @@ final class DetailVolumeInfoCell: UICollectionViewCell {
 
 private extension DetailVolumeInfoCell {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.direction(.row)
+			.paddingHorizontal(20)
+			.define {
+				$0.addItem(self.thumbnailImageView).aspectRatio(88 / 124).marginVertical(20)
+				self.volumeInfoFlexLayout($0).marginLeft(20).marginTop(20).marginBottom(20)
+			}
+	}
+	
+	@discardableResult private func volumeInfoFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem()
+			.shrink(1)
+			.grow(1)
+			.alignItems(.start)
+			.define {
+				$0.addItem(self.titleLabel).shrink(1).marginBottom(4)
+				$0.addItem(self.authorsLabel).shrink(1).marginBottom(4)
+				self.printTypeAndPageCountFlexLayout($0)
+			}
+	}
+	
+	@discardableResult private func printTypeAndPageCountFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem()
+			.direction(.row)
+			.shrink(1)
+			.define {
+				$0.addItem(self.printTypeLabel).shrink(1)
+				$0.addItem(self.pageCountLabel).shrink(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
