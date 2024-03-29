@@ -15,6 +15,7 @@ final class SearchViewReactor: Reactor {
 	enum Action {
 		case search(String?)
 		case nextPage
+		case textChanged(String)
 	}
 	
 	enum Mutation {
@@ -22,6 +23,7 @@ final class SearchViewReactor: Reactor {
 		case setKeyword(String)
 		case setItems([BooksItem])
 		case appendItems([BooksItem])
+		case setLibraryItems([BooksItem])
 		case setTotalItemCount(Int)
 		case updateSections
 	}
@@ -30,6 +32,7 @@ final class SearchViewReactor: Reactor {
 		var isLoading: Bool
 		fileprivate var keyword: String
 		fileprivate var items: [BooksItem]
+		fileprivate var libraryItems: [BooksItem]
 		fileprivate var totalItemCount: Int
 		var sections: [SearchViewSection]
 	}
@@ -45,6 +48,7 @@ final class SearchViewReactor: Reactor {
 			isLoading: false,
 			keyword: "",
 			items: [],
+			libraryItems: [],
 			totalItemCount: 0,
 			sections: []
 		)
@@ -60,6 +64,8 @@ final class SearchViewReactor: Reactor {
 			
 			return Observable.concat([
 				Observable.just(Mutation.setLoading(true)),
+				Observable.just(Mutation.setLibraryItems([])),
+				Observable.just(Mutation.updateSections),
 				self.fetchBooks(keyword: keyword),
 				Observable.just(Mutation.setLoading(false)),
 				Observable.just(Mutation.updateSections)
@@ -72,6 +78,11 @@ final class SearchViewReactor: Reactor {
 				Observable.just(Mutation.setLoading(true)),
 				self.fetchBooks(),
 				Observable.just(Mutation.setLoading(false)),
+				Observable.just(Mutation.updateSections)
+			])
+		case let .textChanged(text):
+			return Observable.concat([
+				self.fetchLibraryBooks(text: text),
 				Observable.just(Mutation.updateSections)
 			])
 		}
@@ -98,6 +109,9 @@ final class SearchViewReactor: Reactor {
 			originItems += items
 			
 			newState.items = originItems
+			
+		case let .setLibraryItems(items):
+			newState.libraryItems = items
 			
 		case let .setTotalItemCount(count):
 			newState.totalItemCount = count
@@ -136,6 +150,17 @@ final class SearchViewReactor: Reactor {
 				}.catch { _ in .empty() }
 		}
 	}
+	
+	private func fetchLibraryBooks(text: String) -> Observable<Mutation> {
+		let libraryItems = BooksRepository.shared.fetchItem(text: text)
+		
+		return Observable.concat([
+			Observable.just(Mutation.setKeyword("")),
+			Observable.just(Mutation.setItems([])),
+			Observable.just(Mutation.setTotalItemCount(0)),
+			Observable.just(Mutation.setLibraryItems(libraryItems))
+		])
+	}
 }
 
 
@@ -143,12 +168,24 @@ final class SearchViewReactor: Reactor {
 
 extension SearchViewReactor {
 	private func assembleSections(state: State) -> [SearchViewSection] {
-		guard state.items.count > 0 else { return [] }
+		var assembledSections: [SearchViewSection] = []
 		
-		let items = state.items.compactMap { item -> SearchViewSection.Item in
-			return .googleplay(item)
+		if state.libraryItems.count > 0 {
+			let items = state.libraryItems.compactMap { item -> SearchViewSection.Item in
+				return .library(item)
+			}
+			
+			assembledSections.append(SearchViewSection(identity: .library, items: items))
 		}
 		
-		return [SearchViewSection(identity: .googleplay, items: items)]
+		if state.items.count > 0 {
+			let items = state.items.compactMap { item -> SearchViewSection.Item in
+				return .googleplay(item)
+			}
+			
+			assembledSections.append(SearchViewSection(identity: .googleplay, items: items))
+		}
+
+		return assembledSections
 	}
 }

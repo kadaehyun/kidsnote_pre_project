@@ -186,6 +186,13 @@ final class SearchViewController: UIViewController, View {
 			.map { _ in Reactor.Action.search(self.textField.text) }
 			.bind(to: reactor.action)
 			.disposed(by: self.disposeBag)
+		
+		self.textField.rx.text
+			.orEmpty
+			.distinctUntilChanged()
+			.map { changedText in Reactor.Action.textChanged(changedText) }
+			.bind(to: reactor.action)
+			.disposed(by: self.disposeBag)
 	}
 	
 	private func bindCollectionView(reactor: SearchViewReactor) {
