@@ -83,8 +83,10 @@ final class DetailViewController: UIViewController, View {
 	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<DetailViewSection> {
 		.init(configureCell: { _, collectionView, indexPath, sectionItem in
 			switch sectionItem {
-			case .volumeInfo:
+			case let .volumeInfo(volumeInfo):
 				let cell = collectionView.dequeue(Reusable.detailVolumeInfoCell, for: indexPath)
+				
+				cell.configure(volumeInfo: volumeInfo)
 				
 				return cell
 			}

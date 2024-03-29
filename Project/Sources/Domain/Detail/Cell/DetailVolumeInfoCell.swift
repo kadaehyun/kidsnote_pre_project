@@ -76,6 +76,31 @@ final class DetailVolumeInfoCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(volumeInfo: VolumeInfo) {
+		self.titleLabel.text = volumeInfo.title
+		self.authorsLabel.text = volumeInfo.authors?.first
+		self.printTypeLabel.text = volumeInfo.printType
+		
+		if let pageCount = volumeInfo.pageCount {
+			self.pageCountLabel.text = " • \(pageCount) 페이지"
+		} else {
+			self.pageCountLabel.text = nil
+		}
+		
+		if let urlString = volumeInfo.imageLinks?.thumbnail, let url = URL(string: urlString) {
+			self.thumbnailImageView.imageDownload(url: url)
+		} else {
+			self.thumbnailImageView.image = nil
+		}
+		
+		self.titleLabel.flex.markDirty()
+		self.authorsLabel.flex.markDirty()
+		self.printTypeLabel.flex.markDirty()
+		self.pageCountLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
 }
 
