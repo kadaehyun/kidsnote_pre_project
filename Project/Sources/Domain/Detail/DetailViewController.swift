@@ -10,13 +10,20 @@ import PinLayout
 import Then
 import UIKit
 import ReactorKit
+import ReusableKit
+import RxDataSources
 
 final class DetailViewController: UIViewController, View {
 	
 	// MARK: - Constants
 	
+	private enum Reusable {
+		static let detailVolumeInfoCell = ReusableCell<DetailVolumeInfoCell>()
+	}
+	
 	// MARK: - Properties
 	
+	private lazy var dataSource = self.createDataSource()
 	var disposeBag = DisposeBag()
 	
 	// MARK: - UI
@@ -32,6 +39,7 @@ final class DetailViewController: UIViewController, View {
 	.then {
 		$0.alwaysBounceVertical = true
 		$0.showsVerticalScrollIndicator = false
+		$0.register(Reusable.detailVolumeInfoCell)
 	}
 	
 	// MARK: - Initialize
@@ -72,12 +80,34 @@ final class DetailViewController: UIViewController, View {
 
 	// MARK: - Configure
 
+	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<DetailViewSection> {
+		.init(configureCell: { _, collectionView, indexPath, sectionItem in
+			switch sectionItem {
+			case .volumeInfo:
+				let cell = collectionView.dequeue(Reusable.detailVolumeInfoCell, for: indexPath)
+				
+				return cell
+			}
+		})
+	}
+	
 	// MARK: - Logic
 	
 	// MARK: - Bind
 
 	func bind(reactor: DetailViewReactor) {
+		self.bindCollectionView(reactor: reactor)
+	}
+	
+	private func bindCollectionView(reactor: DetailViewReactor) {
+		self.collectionView.rx
+			.setDelegate(self)
+			.disposed(by: self.disposeBag)
 		
+		reactor.state
+			.map { $0.sections }
+			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
 	}
 }
 
@@ -95,5 +125,18 @@ private extension DetailViewController {
 	func layoutFlexContainer() {
 		self.contentView.pin.all(0)
 		self.contentView.flex.layout()
+	}
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let sectionItem = self.dataSource[indexPath]
+		
+		switch sectionItem {
+		case .volumeInfo:
+			return CGSize(width: UIScreen.main.bounds.width, height: 164)
+		}
 	}
 }
