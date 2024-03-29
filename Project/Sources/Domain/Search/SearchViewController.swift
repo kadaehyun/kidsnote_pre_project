@@ -112,6 +112,12 @@ final class SearchViewController: UIViewController, View {
 				cell.configure(item: item)
 				
 				return cell
+			case let .library(item):
+				let cell = collectionView.dequeue(Reusable.searchListCell, for: indexPath)
+				
+				cell.configure(item: item)
+				
+				return cell
 			}
 		}, configureSupplementaryView: { [weak self] _, collectionView, kind, indexPath in
 			guard let self else { return collectionView.emptyView(for: indexPath, kind: kind) }
@@ -128,6 +134,8 @@ final class SearchViewController: UIViewController, View {
 				view.configure(title: "Google Play 검색결과")
 				
 				return view
+			default:
+				return collectionView.emptyView(for: indexPath, kind: kind)
 			}
 		})
 	}
@@ -249,7 +257,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 		let sectionItem = self.dataSource[indexPath]
 		
 		switch sectionItem {
-		case .googleplay:
+		case .googleplay, .library:
 			return CGSize(width: UIScreen.main.bounds.width, height: 80)
 		}
 	}
@@ -260,6 +268,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 		switch section {
 		case .googleplay:
 			return CGSize(width: UIScreen.main.bounds.width, height: 40)
+		default:
+			return .zero
 		}
 	}
 }
