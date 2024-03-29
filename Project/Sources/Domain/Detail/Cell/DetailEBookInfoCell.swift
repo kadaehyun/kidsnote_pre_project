@@ -66,6 +66,13 @@ final class DetailEBookInfoCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(description: String) {
+		self.descriptionLabel.text = description
+		self.descriptionLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
 }
 
