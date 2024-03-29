@@ -10,6 +10,7 @@ import RxDataSources
 struct DetailViewSection {
 	enum Identity: Hashable {
 		case volumeInfo
+		case eBookInfo
 	}
 
 	var identity: Identity
@@ -19,6 +20,7 @@ struct DetailViewSection {
 extension DetailViewSection {
 	enum Item: Hashable {
 		case volumeInfo(VolumeInfo)
+		case eBookInfo(String)
 	}
 }
 

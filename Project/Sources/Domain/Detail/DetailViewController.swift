@@ -89,6 +89,8 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(volumeInfo: volumeInfo)
 				
 				return cell
+			case .eBookInfo(_):
+				return collectionView.emptyCell(for: indexPath)
 			}
 		})
 	}
@@ -139,6 +141,8 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 		switch sectionItem {
 		case .volumeInfo:
 			return CGSize(width: UIScreen.main.bounds.width, height: 164)
+		case .eBookInfo:
+			return CGSize(width: UIScreen.main.bounds.width, height: 150)
 		}
 	}
 }

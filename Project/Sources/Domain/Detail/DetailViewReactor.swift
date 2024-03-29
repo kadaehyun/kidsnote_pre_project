@@ -33,7 +33,8 @@ final class DetailViewReactor: Reactor {
 		self.initialState = State(
 			item: item,
 			sections: [
-				Self.volumeInfoSection(item: item)
+				Self.volumeInfoSection(item: item),
+				Self.eBookInfoSection(item: item)
 			].compactMap { $0 }
 		)
 	}
@@ -58,5 +59,11 @@ extension DetailViewReactor {
 		guard let volumeInfo = item.volumeInfo else { return nil }
 		
 		return .init(identity: .volumeInfo, items: [.volumeInfo(volumeInfo)])
+	}
+	
+	static func eBookInfoSection(item: BooksItem) -> DetailViewSection? {
+		guard let description = item.volumeInfo?.description else { return nil }
+		
+		return .init(identity: .eBookInfo, items: [.eBookInfo(description)])
 	}
 }
