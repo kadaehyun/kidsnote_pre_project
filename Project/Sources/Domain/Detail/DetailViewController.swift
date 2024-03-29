@@ -21,6 +21,7 @@ final class DetailViewController: UIViewController, View {
 		static let detailVolumeInfoCell = ReusableCell<DetailVolumeInfoCell>()
 		static let detailEBookInfoCell = ReusableCell<DetailEBookInfoCell>()
 		static let detailPublishedDateCell = ReusableCell<DetailPublishedDateCell>()
+		static let detailSaveLibraryCell = ReusableCell<DetailSaveLibraryCell>()
 		static let lineReusableView = ReusableView<UICollectionReusableView>()
 	}
 	
@@ -45,6 +46,7 @@ final class DetailViewController: UIViewController, View {
 		$0.register(Reusable.detailVolumeInfoCell)
 		$0.register(Reusable.detailEBookInfoCell)
 		$0.register(Reusable.detailPublishedDateCell)
+		$0.register(Reusable.detailSaveLibraryCell)
 		$0.register(Reusable.lineReusableView, kind: .footer)
 	}
 	
@@ -103,7 +105,9 @@ final class DetailViewController: UIViewController, View {
 				
 				return cell
 			case .saveLibrary:
-				return collectionView.emptyCell(for: indexPath)
+				let cell = collectionView.dequeue(Reusable.detailSaveLibraryCell, for: indexPath)
+				
+				return cell
 			case let .eBookInfo(volumeInfo):
 				let cell = collectionView.dequeue(Reusable.detailEBookInfoCell, for: indexPath)
 				
