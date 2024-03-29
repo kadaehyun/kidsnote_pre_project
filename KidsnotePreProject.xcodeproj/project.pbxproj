@@ -47,6 +47,7 @@
 		E355C6502BB548AF00AA3778 /* SearchListHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */; };
 		E355C6522BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */; };
 		E3972A212BB77DF4008090B6 /* LibraryCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */; };
+		E3972A232BB78284008090B6 /* LibraryCarouselCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */; };
 		E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		E355C64F2BB548AF00AA3778 /* SearchListHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListHeaderReusableView.swift; sourceTree = "<group>"; };
 		E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Empty.swift"; sourceTree = "<group>"; };
 		E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCell.swift; sourceTree = "<group>"; };
+		E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCellReactor.swift; sourceTree = "<group>"; };
 		E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 			children = (
 				E355C6452BB501F600AA3778 /* SearchListCell.swift */,
 				E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */,
+				E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */,
 				E31250EE2BB6DA0800FF2899 /* BooksEntity.swift in Sources */,
 				E31250F62BB6ED1F00FF2899 /* DetailSaveLibraryCell.swift in Sources */,
+				E3972A232BB78284008090B6 /* LibraryCarouselCellReactor.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
 				E3972A212BB77DF4008090B6 /* LibraryCarouselCell.swift in Sources */,
 				E31250D92BB6563200FF2899 /* DetailViewSection.swift in Sources */,
