@@ -18,6 +18,13 @@ final class DetailVolumeInfoCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let thumbnailShadowView = UIView().then {
+		$0.layer.shadowOffset = CGSize(width: 2, height: 2)
+		$0.layer.shadowOpacity = 0.5
+		$0.layer.shadowRadius = 2
+		$0.layer.shadowColor = UIColor.gray.cgColor
+	}
+	
 	private let thumbnailImageView = UIImageView().then {
 		$0.contentMode = .scaleAspectFill
 		$0.backgroundColor = .clear
@@ -112,8 +119,15 @@ private extension DetailVolumeInfoCell {
 			.direction(.row)
 			.paddingHorizontal(20)
 			.define {
-				$0.addItem(self.thumbnailImageView).aspectRatio(88 / 124).marginVertical(20)
+				self.thumbnailFlexLayout($0).aspectRatio(88 / 124).marginVertical(20)
 				self.volumeInfoFlexLayout($0).marginLeft(20).marginTop(20).marginBottom(20)
+			}
+	}
+	
+	@discardableResult private func thumbnailFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem(self.thumbnailShadowView)
+			.define {
+				$0.addItem(self.thumbnailImageView).grow(1)
 			}
 	}
 	

@@ -18,6 +18,13 @@ final class SearchListCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let thumbnailShadowView = UIView().then {
+		$0.layer.shadowOffset = CGSize(width: 2, height: 2)
+		$0.layer.shadowOpacity = 0.5
+		$0.layer.shadowRadius = 2
+		$0.layer.shadowColor = UIColor.gray.cgColor
+	}
+	
 	private let thumbnailImageView = UIImageView().then {
 		$0.contentMode = .scaleAspectFill
 		$0.backgroundColor = .clear
@@ -112,8 +119,15 @@ private extension SearchListCell {
 			.direction(.row)
 			.paddingHorizontal(20)
 			.define {
-				$0.addItem(self.thumbnailImageView).aspectRatio(42 / 60).marginVertical(10)
+				self.thumbnailFlexLayout($0).aspectRatio(42 / 60).marginVertical(10)
 				self.volumeInfoFlexLayout($0).marginLeft(14).marginTop(10).marginBottom(8)
+			}
+	}
+	
+	@discardableResult private func thumbnailFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem(self.thumbnailShadowView)
+			.define {
+				$0.addItem(self.thumbnailImageView).grow(1)
 			}
 	}
 	
