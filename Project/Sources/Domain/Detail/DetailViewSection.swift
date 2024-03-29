@@ -11,6 +11,7 @@ struct DetailViewSection {
 	enum Identity: Hashable {
 		case volumeInfo
 		case eBookInfo
+		case publishedDate
 	}
 
 	var identity: Identity
@@ -21,6 +22,7 @@ extension DetailViewSection {
 	enum Item: Hashable {
 		case volumeInfo(VolumeInfo)
 		case eBookInfo(String)
+		case publishedDate(VolumeInfo)
 	}
 }
 

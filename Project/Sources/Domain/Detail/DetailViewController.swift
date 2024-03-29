@@ -97,6 +97,8 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(description: description)
 				
 				return cell
+			case .publishedDate(_):
+				return collectionView.emptyCell(for: indexPath)
 			}
 		})
 	}
@@ -149,6 +151,8 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 			return CGSize(width: UIScreen.main.bounds.width, height: 164)
 		case .eBookInfo:
 			return CGSize(width: UIScreen.main.bounds.width, height: 150)
+		case .publishedDate:
+			return CGSize(width: UIScreen.main.bounds.width, height: 78)
 		}
 	}
 }
