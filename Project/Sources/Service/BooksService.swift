@@ -16,11 +16,16 @@ enum ApiError: Error {
 }
 
 final class BooksService {
-	func fetchBooks(keyword: String) -> Observable<BooksModel> {
+	func fetchBooks(keyword: String, startIndex: Int) -> Observable<BooksModel> {
 		return Observable.create() { observer in
-			let urlString = "https://www.googleapis.com/books/v1/volumes?q=" + keyword
+			var components = URLComponents(string: "https://www.googleapis.com/books/v1/volumes")
+			components?.queryItems = [
+				URLQueryItem(name: "q", value: keyword),
+				URLQueryItem(name: "startIndex", value: String(startIndex)),
+				URLQueryItem(name: "maxResults", value: "40")
+			]
 			
-			guard let url = URL(string: urlString) else {
+			guard let url = components?.url else {
 				observer.onError(ApiError.badUrl)
 				return Disposables.create()
 			}

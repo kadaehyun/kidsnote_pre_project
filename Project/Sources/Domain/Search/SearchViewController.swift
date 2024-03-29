@@ -197,6 +197,19 @@ final class SearchViewController: UIViewController, View {
 			})
 			.disposed(by: self.disposeBag)
 
+		self.collectionView.rx
+			.didScroll
+			.withUnretained(self)
+			.subscribe { owner, _ in
+				let offSetY = owner.collectionView.contentOffset.y
+				let contentHeight = owner.collectionView.contentSize.height
+
+				if offSetY > (contentHeight - owner.collectionView.frame.size.height - 100) {
+					reactor.action.onNext(.nextPage)
+				}
+			}
+			.disposed(by: disposeBag)
+		
 	}
 }
 

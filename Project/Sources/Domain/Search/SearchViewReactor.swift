@@ -14,17 +14,23 @@ final class SearchViewReactor: Reactor {
 
 	enum Action {
 		case search(String?)
+		case nextPage
 	}
 	
 	enum Mutation {
 		case setLoading(Bool)
+		case setKeyword(String)
 		case setItems([BooksItem])
+		case appendItems([BooksItem])
+		case setTotalItemCount(Int)
 		case updateSections
 	}
 	
 	struct State {
 		var isLoading: Bool
+		fileprivate var keyword: String
 		fileprivate var items: [BooksItem]
+		fileprivate var totalItemCount: Int
 		var sections: [SearchViewSection]
 	}
 	
@@ -37,7 +43,9 @@ final class SearchViewReactor: Reactor {
 	init() {
 		self.initialState = State(
 			isLoading: false,
+			keyword: "",
 			items: [],
+			totalItemCount: 0,
 			sections: []
 		)
 	}
@@ -48,10 +56,21 @@ final class SearchViewReactor: Reactor {
 		switch action {
 		case let .search(keyword):
 			guard let keyword, keyword.isEmpty == false else { return .empty() }
+			guard self.currentState.isLoading == false else { return .empty() }
 			
 			return Observable.concat([
 				Observable.just(Mutation.setLoading(true)),
 				self.fetchBooks(keyword: keyword),
+				Observable.just(Mutation.setLoading(false)),
+				Observable.just(Mutation.updateSections)
+			])
+		case .nextPage:
+			guard self.currentState.items.count < self.currentState.totalItemCount else { return .empty() }
+			guard self.currentState.isLoading == false else { return .empty() }
+			
+			return Observable.concat([
+				Observable.just(Mutation.setLoading(true)),
+				self.fetchBooks(),
 				Observable.just(Mutation.setLoading(false)),
 				Observable.just(Mutation.updateSections)
 			])
@@ -67,8 +86,21 @@ final class SearchViewReactor: Reactor {
 		case let .setLoading(isLoading):
 			newState.isLoading = isLoading
 			
+		case let .setKeyword(keyword):
+			newState.keyword = keyword
+			
 		case let .setItems(items):
 			newState.items = items
+		
+		case let .appendItems(items):
+			var originItems = newState.items
+			
+			originItems += items
+			
+			newState.items = originItems
+			
+		case let .setTotalItemCount(count):
+			newState.totalItemCount = count
 			
 		case .updateSections:
 			defer { newState.sections.removeDuplicates() }
@@ -81,14 +113,28 @@ final class SearchViewReactor: Reactor {
 	
 	// MARK: - Private
 	
-	private func fetchBooks(keyword: String) -> Observable<Mutation> {
-		BooksService().fetchBooks(keyword: keyword)
-			.asObservable()
-			.flatMap { response -> Observable<Mutation> in
-				guard let items = response.items else { return .empty() }
-				
-				return Observable.just(Mutation.setItems(items))
-			}.catch { _ in .empty() }
+	private func fetchBooks(keyword: String? = nil) -> Observable<Mutation> {
+		if let keyword, keyword.isEmpty == false {
+			BooksService().fetchBooks(keyword: keyword, startIndex: 0)
+				.asObservable()
+				.flatMap { response -> Observable<Mutation> in
+					guard let items = response.items, let totalCount = response.totalItems else { return .empty() }
+					
+					return Observable.concat([
+						Observable.just(Mutation.setKeyword(keyword)),
+						Observable.just(Mutation.setItems(items)),
+						Observable.just(Mutation.setTotalItemCount(totalCount))
+					])
+				}.catch { _ in .empty() }
+		} else {
+			BooksService().fetchBooks(keyword: self.currentState.keyword, startIndex: self.currentState.items.count - 1)
+				.asObservable()
+				.flatMap { response -> Observable<Mutation> in
+					guard let items = response.items else { return .empty() }
+					
+					return Observable.just(Mutation.appendItems(items))
+				}.catch { _ in .empty() }
+		}
 	}
 }
 
