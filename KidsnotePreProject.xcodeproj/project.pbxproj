@@ -13,6 +13,7 @@
 		E31250E02BB6784700FF2899 /* DetailEBookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250DF2BB6784700FF2899 /* DetailEBookInfoCell.swift */; };
 		E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E12BB6826C00FF2899 /* DetailPublishedDateCell.swift */; };
 		E31250E52BB68B6100FF2899 /* EBookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E42BB68B6100FF2899 /* EBookInfoViewController.swift */; };
+		E31250E72BB6A86500FF2899 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */; };
 		E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270082BB39ADA0013009C /* AppDelegate.swift */; };
 		E32270122BB39ADB0013009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32270112BB39ADB0013009C /* Assets.xcassets */; };
 		E32270152BB39ADB0013009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32270132BB39ADB0013009C /* LaunchScreen.storyboard */; };
@@ -49,6 +50,7 @@
 		E31250DF2BB6784700FF2899 /* DetailEBookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEBookInfoCell.swift; sourceTree = "<group>"; };
 		E31250E12BB6826C00FF2899 /* DetailPublishedDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPublishedDateCell.swift; sourceTree = "<group>"; };
 		E31250E42BB68B6100FF2899 /* EBookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBookInfoViewController.swift; sourceTree = "<group>"; };
+		E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		E32270052BB39ADA0013009C /* KidsnotePreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsnotePreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32270082BB39ADA0013009C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32270112BB39ADB0013009C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				E32270662BB44E4E0013009C /* Array+SectionModel.swift */,
 				E355C64C2BB5345600AA3778 /* ImageView+Extension.swift */,
 				E355C6512BB54BFA00AA3778 /* UICollectionReusableView+Empty.swift */,
+				E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
 				E31250D92BB6563200FF2899 /* DetailViewSection.swift in Sources */,
+				E31250E72BB6A86500FF2899 /* UIViewController+Rx.swift in Sources */,
 				E355C6502BB548AF00AA3778 /* SearchListHeaderReusableView.swift in Sources */,
 				E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */,
 				E32270612BB443D10013009C /* SearchViewSection.swift in Sources */,

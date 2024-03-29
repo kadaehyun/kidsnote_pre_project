@@ -143,6 +143,14 @@ final class SearchViewController: UIViewController, View {
 	}
 	
 	func bindLifeCycle(reactor: SearchViewReactor) {
+		self.rx.viewWillAppear
+			.take(1)
+			.withUnretained(self)
+			.subscribe(onNext: { owner, _ in
+				owner.textField.becomeFirstResponder()
+			})
+			.disposed(by: self.disposeBag)
+					   
 		reactor.state.map { $0.isLoading }
 			.distinctUntilChanged()
 			.withUnretained(self)
