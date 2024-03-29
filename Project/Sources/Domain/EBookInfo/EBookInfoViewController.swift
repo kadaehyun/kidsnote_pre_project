@@ -18,6 +18,15 @@ final class EBookInfoViewController: UIViewController {
 	
 	// MARK: - UI
 	
+	private let contentView = UIView().then {
+		$0.backgroundColor = .white
+	}
+	
+	private let descriptionTextView = UITextView().then {
+		$0.font = .systemFont(ofSize: 14)
+		$0.textColor = .darkGray
+	}
+	
 	// MARK: - Initialize
 	
 	@available(*, unavailable) required convenience init(coder aDecoder: NSCoder) {
@@ -28,12 +37,25 @@ final class EBookInfoViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.view.backgroundColor = .white
+		self.view.addSubview(self.contentView)
+		
+		self.defineFlexContainer()
 	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 
 		self.layoutFlexContainer()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.navigationController?.isNavigationBarHidden = false
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		self.navigationController?.isNavigationBarHidden = true
 	}
 	
 	deinit {
@@ -49,9 +71,16 @@ final class EBookInfoViewController: UIViewController {
 
 private extension EBookInfoViewController {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.direction(.column)
+			.paddingHorizontal(20)
+			.define {
+				$0.addItem(self.descriptionTextView).grow(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
-		self.view.flex.layout()
+		self.contentView.pin.all(0)
+		self.contentView.flex.layout()
 	}
 }
