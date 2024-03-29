@@ -20,6 +20,7 @@ final class DetailViewReactor: Reactor {
 	
 	struct State {
 		fileprivate var item: BooksItem
+		var sections: [DetailViewSection]
 	}
 	
 	// MARK: - Properties
@@ -30,7 +31,10 @@ final class DetailViewReactor: Reactor {
 	
 	init(item: BooksItem) {
 		self.initialState = State(
-			item: item
+			item: item,
+			sections: [
+				Self.volumeInfoSection(item: item)
+			].compactMap { $0 }
 		)
 	}
 	
@@ -44,5 +48,15 @@ final class DetailViewReactor: Reactor {
 
 	func reduce(state: State, mutation: Mutation) -> State {
 		state
+	}
+}
+
+// MARK: Section Assemble
+
+extension DetailViewReactor {
+	static func volumeInfoSection(item: BooksItem) -> DetailViewSection? {
+		guard let volumeInfo = item.volumeInfo else { return nil }
+		
+		return .init(identity: .volumeInfo, items: [.volumeInfo(volumeInfo)])
 	}
 }
