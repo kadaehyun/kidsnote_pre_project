@@ -14,6 +14,8 @@
 		E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E12BB6826C00FF2899 /* DetailPublishedDateCell.swift */; };
 		E31250E52BB68B6100FF2899 /* EBookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E42BB68B6100FF2899 /* EBookInfoViewController.swift */; };
 		E31250E72BB6A86500FF2899 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */; };
+		E31250EA2BB6D98D00FF2899 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E31250E92BB6D98D00FF2899 /* Realm */; };
+		E31250EC2BB6D98D00FF2899 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E31250EB2BB6D98D00FF2899 /* RealmSwift */; };
 		E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270082BB39ADA0013009C /* AppDelegate.swift */; };
 		E32270122BB39ADB0013009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32270112BB39ADB0013009C /* Assets.xcassets */; };
 		E32270152BB39ADB0013009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32270132BB39ADB0013009C /* LaunchScreen.storyboard */; };
@@ -74,8 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31250EA2BB6D98D00FF2899 /* Realm in Frameworks */,
 				E322704A2BB3F41C0013009C /* RxRelay in Frameworks */,
 				E32270482BB3F41C0013009C /* RxCocoa-Dynamic in Frameworks */,
+				E31250EC2BB6D98D00FF2899 /* RealmSwift in Frameworks */,
 				E355C6492BB50C1F00AA3778 /* ReusableKit in Frameworks */,
 				E32270312BB3B7210013009C /* PinLayout in Frameworks */,
 				E32270342BB3B72B0013009C /* Then in Frameworks */,
@@ -272,6 +276,8 @@
 				E322705D2BB4434E0013009C /* RxDataSources */,
 				E355C6482BB50C1F00AA3778 /* ReusableKit */,
 				E355C64A2BB50C1F00AA3778 /* RxReusableKit */,
+				E31250E92BB6D98D00FF2899 /* Realm */,
+				E31250EB2BB6D98D00FF2899 /* RealmSwift */,
 			);
 			productName = KidsnotePreProject;
 			productReference = E32270052BB39ADA0013009C /* KidsnotePreProject.app */;
@@ -309,6 +315,7 @@
 				E32270402BB3F41C0013009C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E322705A2BB4434E0013009C /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				E355C6472BB50C1F00AA3778 /* XCRemoteSwiftPackageReference "ReusableKit" */,
+				E31250E82BB6D98D00FF2899 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = E32270062BB39ADA0013009C /* Products */;
 			projectDirPath = "";
@@ -567,6 +574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E31250E82BB6D98D00FF2899 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E322702C2BB3B7190013009C /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
@@ -626,6 +641,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E31250E92BB6D98D00FF2899 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31250E82BB6D98D00FF2899 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		E31250EB2BB6D98D00FF2899 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31250E82BB6D98D00FF2899 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		E322702D2BB3B7190013009C /* FlexLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E322702C2BB3B7190013009C /* XCRemoteSwiftPackageReference "FlexLayout" */;
