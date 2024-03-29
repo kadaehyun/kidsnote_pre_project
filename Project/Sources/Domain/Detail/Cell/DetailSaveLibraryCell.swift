@@ -18,6 +18,15 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let saveButton = UIButton().then {
+		$0.setTitle("내 라이브러리에 저장", for: .normal)
+		$0.setTitleColor(.white, for: .normal)
+		$0.setBackgroundColor(.blue, for: .normal)
+		$0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+		$0.layer.cornerRadius = 4
+		$0.layer.masksToBounds = true
+	}
+	
 	// MARK: - Initialize
 	
 	override init(frame: CGRect) {
@@ -55,6 +64,12 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 
 private extension DetailSaveLibraryCell {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.paddingHorizontal(60)
+			.paddingVertical(15)
+			.define {
+				$0.addItem(self.saveButton).grow(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
