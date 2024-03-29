@@ -102,6 +102,8 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(volumeInfo: volumeInfo)
 				
 				return cell
+			case .saveLibrary:
+				return collectionView.emptyCell(for: indexPath)
 			case let .eBookInfo(volumeInfo):
 				let cell = collectionView.dequeue(Reusable.detailEBookInfoCell, for: indexPath)
 				
@@ -124,7 +126,7 @@ final class DetailViewController: UIViewController, View {
 			let section = self.dataSource[indexPath.section].identity
 
 			switch section {
-			case .volumeInfo:
+			case .volumeInfo, .saveLibrary:
 				let view = collectionView.dequeue(Reusable.lineReusableView, kind: kind, for: indexPath)
 
 				view.backgroundColor = .lightGray
@@ -211,6 +213,8 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 		switch sectionItem {
 		case .volumeInfo:
 			return CGSize(width: UIScreen.main.bounds.width, height: 164)
+		case .saveLibrary:
+			return CGSize(width: UIScreen.main.bounds.width, height: 60)
 		case .eBookInfo:
 			return CGSize(width: UIScreen.main.bounds.width, height: 150)
 		case .publishedDate:
@@ -222,7 +226,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 		let section = self.dataSource[section].identity
 
 		switch section {
-		case .volumeInfo:
+		case .volumeInfo, .saveLibrary:
 			return CGSize(width: UIScreen.main.bounds.width, height: 1)
 		default:
 			return .zero
