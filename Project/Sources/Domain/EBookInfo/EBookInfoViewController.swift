@@ -16,6 +16,8 @@ final class EBookInfoViewController: UIViewController {
 	
 	// MARK: - Properties
 	
+	var volumeInfo: VolumeInfo?
+	
 	// MARK: - UI
 	
 	private let contentView = UIView().then {
@@ -38,10 +40,14 @@ final class EBookInfoViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.navigationItem.title = volumeInfo?.title
+		
 		self.view.backgroundColor = .white
 		self.view.addSubview(self.contentView)
 		
 		self.defineFlexContainer()
+		
+		self.descriptionTextView.text = volumeInfo?.description
 	}
 	
 	override func viewDidLayoutSubviews() {

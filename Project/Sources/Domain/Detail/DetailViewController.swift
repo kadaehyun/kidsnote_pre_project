@@ -95,10 +95,10 @@ final class DetailViewController: UIViewController, View {
 				cell.configure(volumeInfo: volumeInfo)
 				
 				return cell
-			case let .eBookInfo(description):
+			case let .eBookInfo(volumeInfo):
 				let cell = collectionView.dequeue(Reusable.detailEBookInfoCell, for: indexPath)
 				
-				cell.configure(description: description)
+				cell.configure(description: volumeInfo.description ?? "")
 				
 				return cell
 			case let .publishedDate(volumeInfo):
@@ -145,6 +145,21 @@ final class DetailViewController: UIViewController, View {
 		reactor.state
 			.map { $0.sections }
 			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
+		
+		self.collectionView.rx
+			.itemSelected
+			.withUnretained(self)
+			.subscribe(onNext: { owner, indexPath in
+				let sectionItem = owner.dataSource[indexPath]
+				
+				guard case let .eBookInfo(volumeInfo) = sectionItem else { return }
+				
+				let viewController = EBookInfoViewController()
+				viewController.volumeInfo = volumeInfo
+				
+				owner.navigationController?.pushViewController(viewController, animated: true)
+			})
 			.disposed(by: self.disposeBag)
 	}
 }

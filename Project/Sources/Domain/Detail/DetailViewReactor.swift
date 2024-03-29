@@ -63,9 +63,9 @@ extension DetailViewReactor {
 	}
 	
 	static func eBookInfoSection(item: BooksItem) -> DetailViewSection? {
-		guard let description = item.volumeInfo?.description else { return nil }
+		guard let volumeInfo = item.volumeInfo else { return nil }
 		
-		return .init(identity: .eBookInfo, items: [.eBookInfo(description)])
+		return .init(identity: .eBookInfo, items: [.eBookInfo(volumeInfo)])
 	}
 	
 	static func publishedDateSection(item: BooksItem) -> DetailViewSection? {
