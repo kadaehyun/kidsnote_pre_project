@@ -18,6 +18,24 @@ final class LibraryCarouselCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let collectionView = UICollectionView(
+		frame: .zero,
+		collectionViewLayout: UICollectionViewFlowLayout().then {
+			$0.scrollDirection = .horizontal
+			$0.sectionInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+			$0.minimumLineSpacing = 12
+			$0.minimumInteritemSpacing = 0
+		}
+	).then {
+		$0.showsVerticalScrollIndicator = false
+		$0.showsHorizontalScrollIndicator = false
+		$0.backgroundColor = .white
+	}
+	
+	private let lineView = UIView().then {
+		$0.backgroundColor = .lightGray
+	}
+	
 	// MARK: - Initialize
 	
 	override init(frame: CGRect) {
@@ -55,6 +73,12 @@ final class LibraryCarouselCell: UICollectionViewCell {
 
 private extension LibraryCarouselCell {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.paddingTop(8)
+			.define {
+				$0.addItem(self.collectionView).grow(1)
+				$0.addItem(self.lineView).marginHorizontal(20).marginTop(20).height(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
