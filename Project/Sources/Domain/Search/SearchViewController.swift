@@ -20,6 +20,7 @@ final class SearchViewController: UIViewController, View {
 	
 	private enum Reusable {
 		static let searchListCell = ReusableCell<SearchListCell>()
+		static let libraryCarouselCell = ReusableCell<LibraryCarouselCell>()
 		static let headerReusableView = ReusableView<SearchListHeaderReusableView>()
 	}
 	
@@ -54,6 +55,7 @@ final class SearchViewController: UIViewController, View {
 		$0.alwaysBounceVertical = true
 		$0.showsVerticalScrollIndicator = false
 		$0.register(Reusable.searchListCell)
+		$0.register(Reusable.libraryCarouselCell)
 		$0.register(Reusable.headerReusableView, kind: .header)
 	}
 	
@@ -118,8 +120,12 @@ final class SearchViewController: UIViewController, View {
 				cell.configure(item: item)
 				
 				return cell
-			case .librarySearch:
-				return collectionView.emptyCell(for: indexPath)
+			case let .librarySearch(items):
+				let cell = collectionView.dequeue(Reusable.libraryCarouselCell, for: indexPath)
+				
+				cell.reactor = LibraryCarouselCellReactor(items: items)
+				
+				return cell
 			}
 		}, configureSupplementaryView: { [weak self] _, collectionView, kind, indexPath in
 			guard let self else { return collectionView.emptyView(for: indexPath, kind: kind) }

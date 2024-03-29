@@ -19,6 +19,7 @@ final class LibraryCarouselCellReactor: Reactor {
 	}
 	
 	struct State {
+		fileprivate var items: [BooksItem]
 	}
 	
 	// MARK: - Properties
@@ -27,8 +28,9 @@ final class LibraryCarouselCellReactor: Reactor {
 	
 	// MARK: - Initialize
 	
-	init() {
+	init(items: [BooksItem]) {
 		self.initialState = State(
+			items: items
 		)
 	}
 	
