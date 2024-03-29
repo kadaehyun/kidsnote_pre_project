@@ -16,6 +16,8 @@
 		E31250E72BB6A86500FF2899 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */; };
 		E31250EA2BB6D98D00FF2899 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E31250E92BB6D98D00FF2899 /* Realm */; };
 		E31250EC2BB6D98D00FF2899 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E31250EB2BB6D98D00FF2899 /* RealmSwift */; };
+		E31250EE2BB6DA0800FF2899 /* BooksEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250ED2BB6DA0800FF2899 /* BooksEntity.swift */; };
+		E31250F42BB6E13F00FF2899 /* BooksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31250F32BB6E13F00FF2899 /* BooksRepository.swift */; };
 		E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32270082BB39ADA0013009C /* AppDelegate.swift */; };
 		E32270122BB39ADB0013009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32270112BB39ADB0013009C /* Assets.xcassets */; };
 		E32270152BB39ADB0013009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32270132BB39ADB0013009C /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 		E31250E12BB6826C00FF2899 /* DetailPublishedDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPublishedDateCell.swift; sourceTree = "<group>"; };
 		E31250E42BB68B6100FF2899 /* EBookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBookInfoViewController.swift; sourceTree = "<group>"; };
 		E31250E62BB6A86500FF2899 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		E31250ED2BB6DA0800FF2899 /* BooksEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksEntity.swift; sourceTree = "<group>"; };
+		E31250F32BB6E13F00FF2899 /* BooksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepository.swift; sourceTree = "<group>"; };
 		E32270052BB39ADA0013009C /* KidsnotePreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsnotePreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32270082BB39ADA0013009C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32270112BB39ADB0013009C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				E322704E2BB413F00013009C /* BooksService.swift */,
+				E31250F32BB6E13F00FF2899 /* BooksRepository.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				E32270512BB4199C0013009C /* BooksModel.swift */,
+				E31250ED2BB6DA0800FF2899 /* BooksEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -354,11 +360,13 @@
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */,
 				E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */,
+				E31250EE2BB6DA0800FF2899 /* BooksEntity.swift in Sources */,
 				E32270092BB39ADA0013009C /* AppDelegate.swift in Sources */,
 				E31250D92BB6563200FF2899 /* DetailViewSection.swift in Sources */,
 				E31250E72BB6A86500FF2899 /* UIViewController+Rx.swift in Sources */,
 				E355C6502BB548AF00AA3778 /* SearchListHeaderReusableView.swift in Sources */,
 				E322704C2BB3FBCA0013009C /* SearchViewReactor.swift in Sources */,
+				E31250F42BB6E13F00FF2899 /* BooksRepository.swift in Sources */,
 				E32270612BB443D10013009C /* SearchViewSection.swift in Sources */,
 				E32270522BB4199C0013009C /* BooksModel.swift in Sources */,
 				E31250DC2BB65CF700FF2899 /* DetailVolumeInfoCell.swift in Sources */,
