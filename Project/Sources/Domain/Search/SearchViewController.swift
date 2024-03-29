@@ -136,6 +136,12 @@ final class SearchViewController: UIViewController, View {
 				view.configure(title: "Google Play 검색결과")
 				
 				return view
+			case .librarySearch:
+				let view = collectionView.dequeue(Reusable.headerReusableView, kind: kind, for: indexPath)
+
+				view.configure(title: "내 라이브러리 검색결과")
+				
+				return view
 			default:
 				return collectionView.emptyView(for: indexPath, kind: kind)
 			}
