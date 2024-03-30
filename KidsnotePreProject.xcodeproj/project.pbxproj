@@ -49,6 +49,7 @@
 		E3972A212BB77DF4008090B6 /* LibraryCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */; };
 		E3972A232BB78284008090B6 /* LibraryCarouselCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */; };
 		E3972A252BB78696008090B6 /* LibraryCarouselCellSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A242BB78696008090B6 /* LibraryCarouselCellSection.swift */; };
+		E3972A272BB7954B008090B6 /* LibraryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A262BB7954B008090B6 /* LibraryItemCell.swift */; };
 		E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCell.swift; sourceTree = "<group>"; };
 		E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCellReactor.swift; sourceTree = "<group>"; };
 		E3972A242BB78696008090B6 /* LibraryCarouselCellSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCellSection.swift; sourceTree = "<group>"; };
+		E3972A262BB7954B008090B6 /* LibraryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemCell.swift; sourceTree = "<group>"; };
 		E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 				E3972A202BB77DF4008090B6 /* LibraryCarouselCell.swift */,
 				E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */,
 				E3972A242BB78696008090B6 /* LibraryCarouselCellSection.swift */,
+				E3972A262BB7954B008090B6 /* LibraryItemCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				E31250F82BB6F51E00FF2899 /* Button+Extension.swift in Sources */,
 				E3972A252BB78696008090B6 /* LibraryCarouselCellSection.swift in Sources */,
 				E322704F2BB413F00013009C /* BooksService.swift in Sources */,
+				E3972A272BB7954B008090B6 /* LibraryItemCell.swift in Sources */,
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */,
 				E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */,
