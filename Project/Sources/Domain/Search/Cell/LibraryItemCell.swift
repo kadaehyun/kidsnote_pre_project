@@ -64,6 +64,8 @@ final class LibraryItemCell: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
+		
+		self.reset()
 	}
 	
 	deinit {
@@ -89,6 +91,12 @@ final class LibraryItemCell: UICollectionViewCell {
 	}
 	
 	// MARK: - Logic
+	
+	private func reset() {
+		self.titleLabel.text = nil
+		self.authorsLabel.text = nil
+		self.thumbnailImageView.image = nil
+	}
 }
 
 // MARK: - Layout

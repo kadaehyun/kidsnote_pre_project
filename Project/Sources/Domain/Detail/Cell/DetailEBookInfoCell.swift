@@ -58,6 +58,8 @@ final class DetailEBookInfoCell: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
+		
+		self.reset()
 	}
 	
 	deinit {
@@ -74,6 +76,10 @@ final class DetailEBookInfoCell: UICollectionViewCell {
 	}
 	
 	// MARK: - Logic
+	
+	private func reset() {
+		self.descriptionLabel.text = nil
+	}
 }
 
 // MARK: - Layout

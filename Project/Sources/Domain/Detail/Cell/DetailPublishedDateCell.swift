@@ -51,6 +51,8 @@ final class DetailPublishedDateCell: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
+		
+		self.reset()
 	}
 	
 	deinit {
@@ -93,6 +95,10 @@ final class DetailPublishedDateCell: UICollectionViewCell {
 		outputFormatter.dateFormat = outputFormat
 		
 		return outputFormatter.string(from: date)
+	}
+	
+	private func reset() {
+		self.publishedDateLabel.text = nil
 	}
 }
 

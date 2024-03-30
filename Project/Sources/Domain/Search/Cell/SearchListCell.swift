@@ -75,6 +75,8 @@ final class SearchListCell: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
+		
+		self.reset()
 	}
 	
 	deinit {
@@ -109,6 +111,14 @@ final class SearchListCell: UICollectionViewCell {
 	}
 	
 	// MARK: - Logic
+	
+	private func reset() {
+		self.titleLabel.text = nil
+		self.authorsLabel.text = nil
+		self.printTypeLabel.text = nil
+		self.averageRatingLabel.text = nil
+		self.thumbnailImageView.image = nil
+	}
 }
 
 // MARK: - Layout
