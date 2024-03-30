@@ -10,6 +10,7 @@ import PinLayout
 import Then
 import UIKit
 import ReactorKit
+import RxDataSources
 
 final class LibraryCarouselCell: UICollectionViewCell, View {
 	
@@ -17,6 +18,7 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 	
 	// MARK: - Properties
 
+	private lazy var dataSource = self.createDataSource()
 	var disposeBag = DisposeBag()
 	
 	// MARK: - UI
@@ -69,12 +71,34 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 
 	// MARK: - Configure
 
+	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<LibraryCarouselCellSection> {
+		.init(configureCell: { _, collectionView, indexPath, sectionItem in
+			switch sectionItem {
+			case .library:
+				return collectionView.emptyCell(for: indexPath)
+			}
+		})
+	}
+	
 	// MARK: - Logic
 	
 	// MARK: - Bind
 
 	func bind(reactor: LibraryCarouselCellReactor) {
+		self.bindCollectionView(reactor: reactor)
 		
+		reactor.action.onNext(.refresh)
+	}
+	
+	private func bindCollectionView(reactor: LibraryCarouselCellReactor) {
+		self.collectionView.rx
+			.setDelegate(self)
+			.disposed(by: self.disposeBag)
+		
+		reactor.state
+			.map { $0.sections }
+			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
 	}
 }
 
@@ -92,5 +116,18 @@ private extension LibraryCarouselCell {
 	
 	func layoutFlexContainer() {
 		self.contentView.flex.layout()
+	}
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+
+extension LibraryCarouselCell: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let sectionItem = self.dataSource[indexPath]
+		
+		switch sectionItem {
+		case .library:
+			return CGSize(width: 150, height: 247)
+		}
 	}
 }
