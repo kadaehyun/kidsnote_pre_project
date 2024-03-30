@@ -18,6 +18,30 @@ final class LibraryItemCell: UICollectionViewCell {
 
 	// MARK: - UI
 	
+	private let thumbnailShadowView = UIView().then {
+		$0.layer.shadowOffset = CGSize(width: 2, height: 2)
+		$0.layer.shadowOpacity = 0.5
+		$0.layer.shadowRadius = 2
+		$0.layer.shadowColor = UIColor.gray.cgColor
+	}
+	
+	private let thumbnailImageView = UIImageView().then {
+		$0.contentMode = .scaleAspectFill
+		$0.backgroundColor = .clear
+		$0.clipsToBounds = true
+		$0.layer.cornerRadius = 4
+	}
+	
+	private let titleLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 12)
+		$0.textColor = .darkGray
+	}
+	
+	private let authorsLabel = UILabel().then {
+		$0.font = .systemFont(ofSize: 12)
+		$0.textColor = .darkGray
+	}
+	
 	// MARK: - Initialize
 	
 	override init(frame: CGRect) {
@@ -55,6 +79,29 @@ final class LibraryItemCell: UICollectionViewCell {
 
 private extension LibraryItemCell {
 	func defineFlexContainer() {
+		self.contentView.flex
+			.define {
+				self.thumbnailFlexLayout($0).aspectRatio(150 / 216)
+				self.volumeInfoFlexLayout($0).marginTop(4)
+			}
+	}
+	
+	@discardableResult private func thumbnailFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem(self.thumbnailShadowView)
+			.define {
+				$0.addItem(self.thumbnailImageView).grow(1)
+			}
+	}
+	
+	@discardableResult private func volumeInfoFlexLayout(_ flex: Flex) -> Flex {
+		flex.addItem()
+			.shrink(1)
+			.grow(1)
+			.alignItems(.start)
+			.define {
+				$0.addItem(self.titleLabel).shrink(1).marginBottom(2)
+				$0.addItem(self.authorsLabel).shrink(1)
+			}
 	}
 	
 	func layoutFlexContainer() {
