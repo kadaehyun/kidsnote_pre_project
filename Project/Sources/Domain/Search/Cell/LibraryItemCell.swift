@@ -12,10 +12,6 @@ import UIKit
 
 final class LibraryItemCell: UICollectionViewCell {
 	
-	// MARK: - Constants
-	
-	// MARK: - Properties
-
 	// MARK: - UI
 	
 	private let thumbnailShadowView = UIView().then {

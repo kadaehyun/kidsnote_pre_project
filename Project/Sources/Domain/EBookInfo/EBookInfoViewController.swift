@@ -12,8 +12,6 @@ import UIKit
 
 final class EBookInfoViewController: UIViewController {
 	
-	// MARK: - Constants
-	
 	// MARK: - Properties
 	
 	var volumeInfo: VolumeInfo?
@@ -67,10 +65,6 @@ final class EBookInfoViewController: UIViewController {
 	deinit {
 		print("EBookInfoViewController deinit...")
 	}
-
-	// MARK: - Configure
-
-	// MARK: - Logic
 }
 
 // MARK: - Layout

@@ -13,8 +13,6 @@ import RxSwift
 
 final class DetailSaveLibraryCell: UICollectionViewCell {
 	
-	// MARK: - Constants
-	
 	// MARK: - Properties
 
 	private var disposeBag = DisposeBag()
@@ -65,8 +63,6 @@ final class DetailSaveLibraryCell: UICollectionViewCell {
 	func configure(item: BooksItem) {
 		self.item = item
 	}
-	
-	// MARK: - Logic
 	
 	// MARK: - Bind
 	

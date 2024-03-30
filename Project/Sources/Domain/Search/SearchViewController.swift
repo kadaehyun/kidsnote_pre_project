@@ -162,8 +162,6 @@ final class SearchViewController: UIViewController, View {
 		})
 	}
 
-	// MARK: - Logic
-	
 	// MARK: - Bind
 
 	func bind(reactor: SearchViewReactor) {

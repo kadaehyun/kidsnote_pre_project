@@ -91,8 +91,6 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 		})
 	}
 	
-	// MARK: - Logic
-	
 	// MARK: - Bind
 
 	func bind(reactor: LibraryCarouselCellReactor) {

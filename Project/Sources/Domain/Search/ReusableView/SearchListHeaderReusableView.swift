@@ -12,10 +12,6 @@ import Then
 
 public final class SearchListHeaderReusableView: UICollectionReusableView {
 	
-	// MARK: - Constants
-
-	// MARK: - Properties
-
 	// MARK: - UI
 	
 	private let contentView = UIView()
@@ -61,8 +57,6 @@ public final class SearchListHeaderReusableView: UICollectionReusableView {
 		
 		self.setNeedsLayout()
 	}
-	
-	// MARK: - Logic
 }
 
 // MARK: - Layout

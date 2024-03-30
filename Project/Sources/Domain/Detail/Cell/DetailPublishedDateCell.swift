@@ -12,10 +12,6 @@ import UIKit
 
 final class DetailPublishedDateCell: UICollectionViewCell {
 	
-	// MARK: - Constants
-	
-	// MARK: - Properties
-
 	// MARK: - UI
 	
 	private let titleLabel = UILabel().then {

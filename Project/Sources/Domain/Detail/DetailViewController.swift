@@ -144,8 +144,6 @@ final class DetailViewController: UIViewController, View {
 		})
 	}
 	
-	// MARK: - Logic
-	
 	// MARK: - Bind
 
 	func bind(reactor: DetailViewReactor) {
