@@ -9,6 +9,12 @@ import UIKit
 
 extension UIImageView {
 	func imageDownload(url: URL) {
+		if let cacheImage = Cache.imageCache.object(forKey: url.absoluteString as NSString) {
+			DispatchQueue.main.async() { [weak self] in
+				self?.image = cacheImage
+			}
+		}
+		
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"
 
@@ -18,6 +24,8 @@ extension UIImageView {
 			guard let data = data, error == nil, let image = UIImage(data: data) else { return }
 			
 			DispatchQueue.main.async() { [weak self] in
+				Cache.imageCache.setObject(image, forKey: url.absoluteString as NSString)
+				
 				self?.image = image
 			}
 		}.resume()

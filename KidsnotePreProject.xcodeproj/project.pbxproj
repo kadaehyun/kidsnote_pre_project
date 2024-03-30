@@ -50,6 +50,7 @@
 		E3972A232BB78284008090B6 /* LibraryCarouselCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */; };
 		E3972A252BB78696008090B6 /* LibraryCarouselCellSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A242BB78696008090B6 /* LibraryCarouselCellSection.swift */; };
 		E3972A272BB7954B008090B6 /* LibraryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A262BB7954B008090B6 /* LibraryItemCell.swift */; };
+		E3972A292BB7AC9E008090B6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3972A282BB7AC9E008090B6 /* Cache.swift */; };
 		E3FCED492BB55C0700CEFAF4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		E3972A222BB78284008090B6 /* LibraryCarouselCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCellReactor.swift; sourceTree = "<group>"; };
 		E3972A242BB78696008090B6 /* LibraryCarouselCellSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCarouselCellSection.swift; sourceTree = "<group>"; };
 		E3972A262BB7954B008090B6 /* LibraryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemCell.swift; sourceTree = "<group>"; };
+		E3972A282BB7AC9E008090B6 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		E3FCED482BB55C0700CEFAF4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 			children = (
 				E322704E2BB413F00013009C /* BooksService.swift */,
 				E31250F32BB6E13F00FF2899 /* BooksRepository.swift */,
+				E3972A282BB7AC9E008090B6 /* Cache.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				E322703A2BB3DD460013009C /* SearchViewController.swift in Sources */,
 				E355C64D2BB5345600AA3778 /* ImageView+Extension.swift in Sources */,
 				E31250E22BB6826C00FF2899 /* DetailPublishedDateCell.swift in Sources */,
+				E3972A292BB7AC9E008090B6 /* Cache.swift in Sources */,
 				E31250EE2BB6DA0800FF2899 /* BooksEntity.swift in Sources */,
 				E31250F62BB6ED1F00FF2899 /* DetailSaveLibraryCell.swift in Sources */,
 				E3972A232BB78284008090B6 /* LibraryCarouselCellReactor.swift in Sources */,
