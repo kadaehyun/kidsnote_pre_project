@@ -11,10 +11,15 @@ import Then
 import UIKit
 import ReactorKit
 import RxDataSources
+import ReusableKit
 
 final class LibraryCarouselCell: UICollectionViewCell, View {
 	
 	// MARK: - Constants
+	
+	private enum Reusable {
+		static let libraryItemCell = ReusableCell<LibraryItemCell>()
+	}
 	
 	// MARK: - Properties
 
@@ -35,6 +40,7 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 		$0.showsVerticalScrollIndicator = false
 		$0.showsHorizontalScrollIndicator = false
 		$0.backgroundColor = .white
+		$0.register(Reusable.libraryItemCell)
 	}
 	
 	private let lineView = UIView().then {
@@ -74,8 +80,12 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 	private func createDataSource() -> RxCollectionViewSectionedReloadDataSource<LibraryCarouselCellSection> {
 		.init(configureCell: { _, collectionView, indexPath, sectionItem in
 			switch sectionItem {
-			case .library:
-				return collectionView.emptyCell(for: indexPath)
+			case let .library(item):
+				let cell = collectionView.dequeue(Reusable.libraryItemCell, for: indexPath)
+				
+				cell.configure(item: item)
+				
+				return cell
 			}
 		})
 	}

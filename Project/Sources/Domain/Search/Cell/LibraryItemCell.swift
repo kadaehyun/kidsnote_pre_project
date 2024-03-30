@@ -72,6 +72,22 @@ final class LibraryItemCell: UICollectionViewCell {
 
 	// MARK: - Configure
 
+	func configure(item: BooksItem) {
+		self.titleLabel.text = item.volumeInfo?.title
+		self.authorsLabel.text = item.volumeInfo?.authors?.first
+
+		if let urlString = item.volumeInfo?.imageLinks?.thumbnail, let url = URL(string: urlString) {
+			self.thumbnailImageView.imageDownload(url: url)
+		} else {
+			self.thumbnailImageView.image = nil
+		}
+		
+		self.titleLabel.flex.markDirty()
+		self.authorsLabel.flex.markDirty()
+		
+		self.setNeedsLayout()
+	}
+	
 	// MARK: - Logic
 }
 
