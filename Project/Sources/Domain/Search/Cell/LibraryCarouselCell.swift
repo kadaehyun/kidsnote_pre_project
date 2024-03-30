@@ -25,6 +25,7 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 
 	private lazy var dataSource = self.createDataSource()
 	var disposeBag = DisposeBag()
+	var itemSelectedObserver: AnyObserver<BooksItem>?
 	
 	// MARK: - UI
 	
@@ -108,6 +109,21 @@ final class LibraryCarouselCell: UICollectionViewCell, View {
 		reactor.state
 			.map { $0.sections }
 			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
+		
+		self.collectionView.rx
+			.itemSelected
+			.withUnretained(self)
+			.subscribe(onNext: { owner, indexPath in
+				let sectionItem = owner.dataSource[indexPath]
+				
+				switch sectionItem {
+				case let .library(item):
+					owner.itemSelectedObserver?.onNext(item)
+				default:
+					break
+				}
+			})
 			.disposed(by: self.disposeBag)
 	}
 }

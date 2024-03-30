@@ -124,6 +124,14 @@ final class SearchViewController: UIViewController, View {
 				let cell = collectionView.dequeue(Reusable.libraryCarouselCell, for: indexPath)
 				
 				cell.reactor = LibraryCarouselCellReactor(items: items)
+				cell.itemSelectedObserver = .init { [weak self] event in
+					guard let item = event.element else { return }
+					
+					let viewController = DetailViewController()
+					viewController.reactor = DetailViewReactor(item: item)
+					
+					self?.navigationController?.pushViewController(viewController, animated: true)
+				}
 				
 				return cell
 			}
